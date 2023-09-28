@@ -32,8 +32,8 @@ export default {
     INPUT_T: "#7C7C8A",
     INPUT_ICON: "#C4C4CC",
 
-    INPUT_SELECT_BG:  "#0D1D25",
-    INPUT_SELECT_T: "#C4C4CC",
+    SELECT_BG:  "#0D1D25",
+    SELECT_T: "#C4C4CC",
 
     ITEM_NEW_T__BD: "#7C7C8A",
     ITEM_NEW_BG: "transparent",
