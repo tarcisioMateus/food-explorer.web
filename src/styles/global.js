@@ -31,6 +31,8 @@ export default createGlobalStyle`
     border: none;
     background-color: ${ ({theme}) => theme.COLORS.BUTTON_BG};
     color: ${ ({theme}) => theme.COLORS.BUTTON_T};
+    font-weight: 500;
+
     cursor: pointer;
     transition: all 300ms;
   }
