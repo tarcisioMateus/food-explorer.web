@@ -7,6 +7,7 @@ export function Brand() {
     <Container>
       <img
         src = {BrandSvg}
+        alt='light blue hexagon'
       />
       <h1>food explorer</h1>
     </Container>

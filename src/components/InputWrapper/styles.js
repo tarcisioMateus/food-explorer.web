@@ -43,8 +43,11 @@ export const Container = styled.div`
       font-weight: 400;
       color: ${ ({theme}) => theme.COLORS.INPUT_T };
 
-      ::placeholder {
+      &::placeholder {
         color: ${ ({theme}) => theme.COLORS.INPUT_T };
+      }
+      &:invalid {
+        color: ${ ({theme}) => theme.COLORS.BUTTON_ADMIN_BG };
       }
     }
 
