@@ -5,12 +5,19 @@ import { ButtonText } from "../../components/ButtonText"
 
 import { Container, Form } from "./styles"
 
-export function SignIn({}) {
+export function SignUp({}) {
   return (
     <Container>
       <main>
         <Brand/>
         <Form>
+          <InputWrapper
+            label='Name'
+            type='text'
+            placeholder='example: Mary Jane'
+            required
+          />
+
           <InputWrapper
             label='Email'
             type='email'
@@ -29,11 +36,11 @@ export function SignIn({}) {
 
           <Button
             type='submit'
-            name='Sign In'
+            name='Sign Up'
           />
 
           <ButtonText
-            name='Create an account'
+            name='Already have an account'
           />
         </Form>
       </main>
