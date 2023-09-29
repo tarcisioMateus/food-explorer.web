@@ -35,7 +35,7 @@ export default createGlobalStyle`
     transition: all 300ms;
   }
   button:hover {
-    transform: scale(1.1);
-    filter: grayscale(60%) drop-shadow(4px 4px 8px black) invert(5%);
+    transform: scale(1.05);
+    filter: grayscale(30%) drop-shadow(2px 2px 4px grey);
   }
 `
