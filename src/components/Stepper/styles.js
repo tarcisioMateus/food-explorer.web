@@ -7,6 +7,7 @@ export const Container = styled.div`
   justify-content: center;
 
   gap: 1.4rem;
+  margin-bottom: 0.4rem;
 
   >span {
     font-size: 1.6rem;

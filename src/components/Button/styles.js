@@ -15,4 +15,8 @@ export const Container = styled.button`
   >svg {
     margin-right: 0.6rem;
   }
+
+  &.card {
+    padding: 0.4rem 0;
+  }
 `

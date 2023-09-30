@@ -3,11 +3,10 @@ export default {
   COLORS: {
     BG: "#000A0F",
     MAIN_T: "#E1E1E6",
-    MAIN_SPAN: "#82F3FF",
+    SPAN: "#82F3FF",
 
     H1: "#FFFFFF",
     NAV_BG: "#001119",
-    NAV_SPAN: "#82F3FF",
 
 
     MENU_BUTTON_LIST_BB: "#192227",
