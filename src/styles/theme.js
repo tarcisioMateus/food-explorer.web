@@ -10,7 +10,7 @@ export default {
     NAV_SPAN: "#82F3FF",
 
 
-    MENU_BUTTON_LIST_B: "#192227",
+    MENU_BUTTON_LIST_BB: "#192227",
 
 
     TAG_BG: "#192227",

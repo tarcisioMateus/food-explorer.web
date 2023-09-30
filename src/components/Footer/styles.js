@@ -1,12 +1,13 @@
 import styled from "styled-components"
 
 export const Container = styled.footer`
-    background-color: ${ ({theme}) => theme.COLORS.FOOTER_BG};
+  grid-area: footer;
+  background-color: ${ ({theme}) => theme.COLORS.FOOTER_BG};
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.8rem;
 
 
   >p {
