@@ -15,4 +15,16 @@ export const Container = styled.header`
     font-weight: 700;
     font-size: 3.6rem;
   }
+
+  &.nav {
+    >img {
+      margin-right: 0.8rem;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    >h1 {
+      font-size: 2.1rem;
+    }
+  }
 `

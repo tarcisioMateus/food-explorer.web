@@ -9,8 +9,7 @@ export function ReceiptButton ({ amount = 0, ...rest}) {
         src = { ReceiptSvg }
         alt = 'receipt svg'
       />
-
-      <button type='button'> {amount} </button>
+      <div> {amount} </div>
     </Container>
   )
 }

@@ -6,7 +6,7 @@ export default {
     MAIN_SPAN: "#82F3FF",
 
     H1: "#FFFFFF",
-    NAV_ICON: "#065E7C",
+    NAV_BG: "#001119",
     NAV_SPAN: "#82F3FF",
 
 

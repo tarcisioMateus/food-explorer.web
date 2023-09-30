@@ -2,9 +2,9 @@ import BrandSvg from '../../assets/brand.svg'
 
 import { Container } from "./styles"
 
-export function Brand() {
+export function Brand({ ...rest }) {
   return (
-    <Container>
+    <Container {...rest}>
       <img
         src = {BrandSvg}
         alt='light blue hexagon'

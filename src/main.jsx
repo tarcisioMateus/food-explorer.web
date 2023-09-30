@@ -6,12 +6,12 @@ import theme from './styles/theme'
 import GlobalStyles from './styles/global'
 
 import { SignUp } from './pages/SignUp'
-import { ReceiptButton } from './components/ReceiptButton'
+import { Nav } from './components/Nav'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <ReceiptButton/>
+      <Nav/>
     </ThemeProvider>
   </React.StrictMode>
 )
