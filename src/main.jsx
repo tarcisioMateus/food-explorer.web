@@ -6,12 +6,12 @@ import theme from './styles/theme'
 import GlobalStyles from './styles/global'
 
 import { Menu } from './pages/Menu'
-import { Footer } from './components/Footer'
+import { Stepper } from './components/Stepper'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <Menu/>
+      <Stepper/>
     </ThemeProvider>
   </React.StrictMode>
 )
