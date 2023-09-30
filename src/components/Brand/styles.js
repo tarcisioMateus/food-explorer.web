@@ -27,4 +27,20 @@ export const Container = styled.header`
       font-size: 2.1rem;
     }
   }
+
+  &.footer {
+    >img {
+      margin-right: 0.8rem;
+      width: 1.8rem;
+      height: 1.8rem;
+
+      transform: scaleX(1.22);
+      filter: grayscale(.8);
+    }
+
+    >h1 {
+      font-size: 1.5rem;
+      color: ${ ({theme}) => theme.COLORS.FOOTER_BRAND};
+    }
+  }
 `

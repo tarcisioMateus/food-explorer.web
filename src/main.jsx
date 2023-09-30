@@ -6,12 +6,12 @@ import theme from './styles/theme'
 import GlobalStyles from './styles/global'
 
 import { SignUp } from './pages/SignUp'
-import { Nav } from './components/Nav'
+import { Footer } from './components/Footer'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <Nav/>
+      <Footer/>
     </ThemeProvider>
   </React.StrictMode>
 )
