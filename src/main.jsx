@@ -6,12 +6,20 @@ import theme from './styles/theme'
 import GlobalStyles from './styles/global'
 
 import { Menu } from './pages/Menu'
-import { Hero } from './components/Hero'
+import { Section } from './components/Section'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <Hero/>
+      <Section 
+        key={1}
+        name='Diner'
+        data={[{id:1, price:'18,00', name:'spagetty', img:''}, 
+          {id:1, price:'18,00', name:'spagetty', img:''},
+          {id:1, price:'18,00', name:'spagetty', img:''},
+          {id:1, price:'18,00', name:'spagetty', img:''},
+        ]}
+      />
     </ThemeProvider>
   </React.StrictMode>
 )
