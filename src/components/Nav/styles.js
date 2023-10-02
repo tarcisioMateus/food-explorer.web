@@ -11,4 +11,9 @@ export const Container = styled.nav`
     width: max-content;
   } 
 
+  height: 11.4rem;
+  width: 428px;
+  margin: auto;
+  position: relative;
+  
 `
