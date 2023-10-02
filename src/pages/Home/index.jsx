@@ -9,38 +9,42 @@ export function Home({ }) {
   return (
     <Container>
       <Nav/>
-      <Hero/>
-      <div id='sections'>
-        <Section 
-          key={1}
-          name='Diner'
-          data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
-            {id:1, price:'18,00', name:'spagetty', img:''},
-            {id:2, price:'18,00', name:'spagetty', img:''},
-            {id:3, price:'18,00', name:'spagetty', img:''},
-          ]}
-        />
+      <main>
 
-        <Section 
-          key={2}
-          name='Diner'
-          data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
-            {id:1, price:'18,00', name:'spagetty', img:''},
-            {id:2, price:'18,00', name:'spagetty', img:''},
-            {id:3, price:'18,00', name:'spagetty', img:''},
-          ]}
-        />
+        <Hero/>
+        <div id='sections'>
+          <Section 
+            key={1}
+            name='Diner'
+            data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
+              {id:1, price:'18,00', name:'spagetty', img:''},
+              {id:2, price:'18,00', name:'spagetty', img:''},
+              {id:3, price:'18,00', name:'spagetty', img:''},
+            ]}
+          />
 
-        <Section 
-          key={3}
-          name='Diner'
-          data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
-            {id:1, price:'18,00', name:'spagetty', img:''},
-            {id:2, price:'18,00', name:'spagetty', img:''},
-            {id:3, price:'18,00', name:'spagetty', img:''},
-          ]}
-        />
-      </div>
+          <Section 
+            key={2}
+            name='Diner'
+            data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
+              {id:1, price:'18,00', name:'spagetty', img:''},
+              {id:2, price:'18,00', name:'spagetty', img:''},
+              {id:3, price:'18,00', name:'spagetty', img:''},
+            ]}
+          />
+
+          <Section 
+            key={3}
+            name='Diner'
+            data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
+              {id:1, price:'18,00', name:'spagetty', img:''},
+              {id:2, price:'18,00', name:'spagetty', img:''},
+              {id:3, price:'18,00', name:'spagetty', img:''},
+            ]}
+          />
+        </div>
+      </main>
+      
       <Footer/>
     </Container>
   )

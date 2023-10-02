@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const Container = styled.nav`
+  grid-area: nav;
+
   padding: 5.6rem 2.8rem 2.4rem;
   display: flex;
   align-items: center;

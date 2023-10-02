@@ -13,4 +13,14 @@ export const Container = styled.div`
     font-size: 1.6rem;
   }
   
+  &.dish {
+    gap: 1.6rem;
+    margin-bottom: 0;
+
+    >span {
+      font-size: 2.26rem;
+      line-height: 160%;
+      font-weight: 600;
+  }
+  }
 `

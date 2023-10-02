@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Container = styled.footer`
   grid-area: footer;
   background-color: ${ ({theme}) => theme.COLORS.FOOTER_BG};
+  height: 7.7rem;
 
   display: flex;
   align-items: center;

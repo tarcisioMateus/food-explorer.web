@@ -14,9 +14,6 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     gap: 2.4rem;
-  }
-
-  >footer {
-    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 `

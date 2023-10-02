@@ -1,10 +1,10 @@
 import { Container } from "./styles"
 
-export function ButtonText({ name, icon: Icon, img, ...rest }) {
+export function ButtonText({ name, icon: Icon, iconSize=24, img, ...rest }) {
   return (
     <Container {...rest} type="button">
+      {Icon && <Icon size={iconSize}/>}
       {name && name}
-      {Icon && <Icon size={18}/>}
       {img && 
         <img src = {img}/>
       }

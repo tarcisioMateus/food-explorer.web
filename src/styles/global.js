@@ -9,6 +9,7 @@ export default createGlobalStyle`
 
     &::-webkit-scrollbar {
       height: .8rem;
+      width: .8rem;
     }
     &::-webkit-scrollbar-track {
       border-radius: 5px;

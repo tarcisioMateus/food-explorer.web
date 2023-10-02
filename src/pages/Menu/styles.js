@@ -16,8 +16,8 @@ export const Container = styled.div`
   width: 428px;
   
   display: grid;
-  grid-template-rows: 11.4rem auto 7.7rem;
   grid-template-areas: "nav" "form" "footer";
+  grid-template-rows: min-content auto min-content; 
 
   >div:first-of-type {
     grid-area: nav;
