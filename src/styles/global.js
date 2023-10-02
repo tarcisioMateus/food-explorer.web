@@ -15,8 +15,11 @@ export default createGlobalStyle`
       background-color: transparent;
     }
     &::-webkit-scrollbar-thumb {
-
       border-radius: 5px;
+      border: ${ ({theme}) => `1px solid ${theme.COLORS.MENU_BUTTON_LIST_BB}`};
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb:hover {
       background-color: ${ ({theme}) => theme.COLORS.MENU_BUTTON_LIST_BB};
     }
   }
