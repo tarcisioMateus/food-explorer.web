@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
   --x-position: -100%;
+  background-color: ${ ({theme}) => theme.COLORS.BG};
 
   transition: all 400ms;
   position: absolute;
