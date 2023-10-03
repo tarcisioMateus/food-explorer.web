@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <InputWrapper label='here' className='admin' placeholder='he he he ' />
+      <InputWrapper label='here' placeholder='he he he' />
     </ThemeProvider>
   </React.StrictMode>
 )

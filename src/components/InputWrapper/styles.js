@@ -51,7 +51,8 @@ export const Container = styled.div`
       }
     }
 
-    &:focus-within {
+    &:focus-within,
+    &:hover {
       outline: ${ ({theme}) => `2px solid ${theme.COLORS.INPUT_T}` };
     }
   }

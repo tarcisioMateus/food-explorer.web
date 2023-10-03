@@ -33,7 +33,8 @@ export const Container = styled.div`
       color: ${ ({theme}) => theme.COLORS.ICON_BUTTON };
     }
 
-    &:focus-within {
+    &:focus-within,
+    &:hover {
       outline: ${ ({theme}) => `2px solid ${theme.COLORS.INPUT_T}` };
     }
   }
