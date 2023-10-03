@@ -1,4 +1,4 @@
-import Img from '../../../public/hero.png'
+import Img from '../../assets/hero.png'
 import { Container } from "./styles"
 
 export function Hero({}) {
