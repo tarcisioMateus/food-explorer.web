@@ -10,6 +10,10 @@ export const Container = styled.button`
   font-size: 1.4rem;
   line-height: 2.4rem;
 
+  &:focus {
+    outline: ${ ({theme}) => `1px solid ${theme.COLORS.BUTTON_T}` };
+  }
+  
   &.menu {
     font-size: 2.4rem;
     line-height: 140%;

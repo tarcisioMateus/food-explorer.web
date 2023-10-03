@@ -12,6 +12,10 @@ export const Container = styled.button`
   line-height: 2.4rem;
   font-size: 1.4rem;
 
+  &:focus {
+    outline: ${ ({theme}) => `1px solid ${theme.COLORS.BUTTON_T}` };
+  }
+  
   >svg {
     margin-right: 0.6rem;
   }
