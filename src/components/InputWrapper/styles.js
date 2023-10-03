@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 
   >div {
-    padding: 0 1.4rem;
+    padding: 1.6rem 1.4rem;
     border-radius: 0.5rem;
     background-color: ${ ({theme}) => theme.COLORS.INPUT_AUTH_BG };
 
@@ -37,7 +37,7 @@ export const Container = styled.div`
       border: none;
       outline: none;
       width: 100%;
-      padding: 1.6rem 0;
+      padding: 0;
 
       font-size: 1.6rem;
       font-weight: 400;
@@ -53,6 +53,18 @@ export const Container = styled.div`
 
     &:focus-within {
       outline: ${ ({theme}) => `2px solid ${theme.COLORS.INPUT_T}` };
+    }
+  }
+
+  &.admin {
+    >label {
+      line-height: 100%;
+      margin-bottom: 1.6rem;
+    }
+
+    >div {
+      border-radius: 0.8rem;
+      background-color: ${ ({theme}) => theme.COLORS.INPUT_ADMIN_BG };
     }
   }
 `

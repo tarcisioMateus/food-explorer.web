@@ -1,8 +1,8 @@
 import { Container } from "./styles"
 
-export function InputWrapper({ label, icon: Icon, ...rest }) {
+export function InputWrapper({ label, icon: Icon, className, ...rest }) {
   return (
-    <Container>
+    <Container className={ className }>
       { label && <label htmlFor={label}>{label}</label>}
       <div>
         { Icon && <Icon size={20}/>}
