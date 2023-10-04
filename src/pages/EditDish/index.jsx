@@ -12,7 +12,7 @@ import { Footer } from '../../components/Footer'
 
 import { Container, Form } from "./styles"
 
-export function NewDish({}) {
+export function EditDish({}) {
   const ingredients = ['honey', 'grapes', 'milk', 'eggs', 'juice']
 
   return (
@@ -22,12 +22,12 @@ export function NewDish({}) {
         <ButtonText
           icon={PiCaretLeft} name='return'
         />
-        <h2>New Dish</h2>
+        <h2>Edit Dish</h2>
 
         <Form>
           <InputFile
             label='Image of the dish'
-            inputText='Select image'
+            inputText='Select image to change it'
           />
           <InputWrapper
             label='Name'
@@ -65,11 +65,17 @@ export function NewDish({}) {
             label='Description'
             placeholder='Briefly talk about the dish, its ingredients and composition'
           />
-          <Button
-            type='submit'
-            name='Save changes'
-            className='admin-save'
-          />
+          <section id='buttons'>
+            <Button
+              name='Delete dish'
+              className='admin-delete'
+            />
+            <Button
+              type='submit'
+              name='Save changes'
+              className='admin-save'
+            />
+          </section>
         </Form>
         
       </main>

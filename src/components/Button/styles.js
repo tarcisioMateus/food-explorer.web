@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const Container = styled.button`
+  white-space: nowrap;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,5 +28,8 @@ export const Container = styled.button`
 
   &.admin-save {
     background-color: ${ ({theme}) => theme.COLORS.BUTTON_ADMIN_BG};
+  }
+  &.admin-delete {
+    background-color: ${ ({theme}) => theme.COLORS.BUTTON_DEL_ADMIN_BG};
   }
 `

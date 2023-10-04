@@ -17,7 +17,7 @@ export default createGlobalStyle`
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 5px;
-      border: ${ ({theme}) => `1px solid ${theme.COLORS.MENU_BUTTON_LIST_BB}`};
+      border: ${ ({theme}) => `2px solid ${theme.COLORS.MENU_BUTTON_LIST_BB}`};
       background-color: transparent;
     }
     &::-webkit-scrollbar-thumb:hover {
