@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   >label:first-of-type {
     font-size: 1.6rem;

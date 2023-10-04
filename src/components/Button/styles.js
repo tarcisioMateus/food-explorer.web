@@ -23,4 +23,8 @@ export const Container = styled.button`
   &.card {
     padding: 0.4rem 0;
   }
+
+  &.admin-save {
+    background-color: ${ ({theme}) => theme.COLORS.BUTTON_ADMIN_BG};
+  }
 `

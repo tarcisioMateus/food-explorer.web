@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   margin: auto;
   height: 100vh;
-  width: 428px;
+  width: 100%;
   
   display: grid;
   grid-template-areas: "nav" "form" "footer";

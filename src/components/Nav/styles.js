@@ -14,7 +14,7 @@ export const Container = styled.nav`
   } 
 
   height: 11.4rem;
-  width: 428px;
+  width: 100%;
   margin: auto;
   
   position: sticky;

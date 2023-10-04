@@ -10,13 +10,12 @@ export const Container = styled.div`
   justify-content: space-between;
   width: fit-content;
   height: min-content;
-  gap: .8rem;
 
   input {
     background: transparent;
     border: none;
     outline: none;
-    width: fit-content;
+    max-width: ${ ({$length}) => `calc( 1.4rem * ${$length})` };
     
     padding: 0;
     margin: 0;
@@ -37,6 +36,7 @@ export const Container = styled.div`
   &.is-new {
     background-color: transparent;
     border: ${ ({theme}) => `1.5px dashed ${theme.COLORS.ITEM_NEW_T__BD}`};
+    gap: .8rem;
 
     input::placeholder {
       color: ${ ({theme}) => theme.COLORS.ITEM_NEW_T__BD};

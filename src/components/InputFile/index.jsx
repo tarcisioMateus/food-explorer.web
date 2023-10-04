@@ -1,11 +1,13 @@
+import { FiUpload } from 'react-icons/fi'
+
 import { Container } from "./styles"
 
-export function InputFile({ label, icon: Icon, iconSize=24, inputText }) {
+export function InputFile({ label, inputText }) {
   return (
     <Container>
       <label>{ label }</label>
       <label htmlFor={label}>
-        { Icon && <Icon size={ iconSize }/> }
+        <FiUpload size={24}/>
         { inputText }
         <input type="file" name={label} id={label} className="sr-only"/>
       </label>
