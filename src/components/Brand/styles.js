@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { devices } from "../../utils/sizeX"
 
 export const Container = styled.header`
   display: flex;
@@ -19,28 +20,45 @@ export const Container = styled.header`
   &.nav {
     >img {
       margin-right: 0.8rem;
-      width: 2.4rem;
-      height: 2.4rem;
+      width: clamp(2.4rem, .1rem + 3.7vw, 3rem);
+      height: clamp(2.4rem, .1rem + 3.7vw, 3rem);
     }
 
     >h1 {
-      font-size: 2.1rem;
+      font-size: clamp(2.1rem, .2rem + 3vw, 2.4rem);
     }
   }
 
   &.footer {
     >img {
       margin-right: 0.8rem;
-      width: 1.8rem;
-      height: 1.8rem;
+      width: clamp(1.8rem, .1rem + 3.7vw, 3rem);
+      height: clamp(1.8rem, .1rem + 3.7vw, 3rem);
 
       transform: scaleX(1.22);
       filter: grayscale(.8);
     }
 
     >h1 {
-      font-size: 1.5rem;
+      font-size: clamp(1.5rem, .1rem + 3vw, 2.4rem);
       color: ${ ({theme}) => theme.COLORS.FOOTER_BRAND};
+    }
+  }
+
+
+  @media only screen and (${devices.sm}) {
+
+    &.nav {
+      >img {
+        margin-right: 1rem;
+      }
+    }
+
+    &.footer {
+      >img {
+        transform: scaleX(1);
+        margin-right: 1rem;
+      }
     }
   }
 `

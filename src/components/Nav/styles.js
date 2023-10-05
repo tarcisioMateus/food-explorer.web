@@ -14,11 +14,7 @@ export const Container = styled.nav`
   } 
 
   height: 11.4rem;
-  width: 100%;
-  margin: auto;
+  width: 100vw;
   
-  position: sticky;
-  z-index: 100;
-  top: 0px;
-  
+  position: relative;
 `

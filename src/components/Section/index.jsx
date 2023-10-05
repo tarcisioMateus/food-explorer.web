@@ -6,7 +6,7 @@ export function Section({name, data, ...rest}) {
   return (
     <Container {...rest}>
       <h3>{name}</h3>
-      <div>
+      <div className='scroll'>
         {
           data.map(item => {
             return (

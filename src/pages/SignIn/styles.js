@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import { devices } from "../../utils/sizeX"
+
 export const Container = styled.div`
   display: grid;
   align-items: center;
@@ -9,7 +11,7 @@ export const Container = styled.div`
   width: 100%;
 
   >main {
-    width: 428px;
+    width: fit-content;
     padding: 0 45px 0 65px;
     margin: auto;
 
@@ -17,10 +19,14 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: flex-start;
   }
+
+  @media only screen and (${devices.sm}) {
+
+  }
 `
 
 export const Form = styled.form`
-  width: 100%;
+  width: clamp(50vw, 60vw, 47.6rem);
   padding-top: 73px;
   
   display: flex;

@@ -9,43 +9,50 @@ export function Home({ }) {
   return (
     <Container>
       <Nav/>
-      <main>
+      <div className='body-content'>
 
-        <Hero/>
-        <div id='sections'>
-          <Section 
-            key={1}
-            name='Diner'
-            data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
-              {id:1, price:'18,00', name:'spagetty', img:''},
-              {id:2, price:'18,00', name:'spagetty', img:''},
-              {id:3, price:'18,00', name:'spagetty', img:''},
-            ]}
-          />
+        <main>
 
-          <Section 
-            key={2}
-            name='Diner'
-            data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
-              {id:1, price:'18,00', name:'spagetty', img:''},
-              {id:2, price:'18,00', name:'spagetty', img:''},
-              {id:3, price:'18,00', name:'spagetty', img:''},
-            ]}
-          />
+          <Hero/>
+          <div id='sections'>
+            <Section 
+              key={1}
+              name='Diner'
+              data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
+                {id:1, price:'18,00', name:'spagetty', img:''},
+                {id:2, price:'18,00', name:'spagetty', img:''},
+                {id:3, price:'18,00', name:'spagetty', img:''},
+                {id:4, price:'18,00', name:'spagetty', img:''},
+                {id:5, price:'18,00', name:'spagetty', img:''},
+                {id:6, price:'18,00', name:'spagetty', img:''}
+              ]}
+            />
 
-          <Section 
-            key={3}
-            name='Diner'
-            data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
-              {id:1, price:'18,00', name:'spagetty', img:''},
-              {id:2, price:'18,00', name:'spagetty', img:''},
-              {id:3, price:'18,00', name:'spagetty', img:''},
-            ]}
-          />
-        </div>
-      </main>
-      
-      <Footer/>
+            <Section 
+              key={2}
+              name='Diner'
+              data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
+                {id:1, price:'18,00', name:'spagetty', img:''},
+                {id:2, price:'18,00', name:'spagetty', img:''},
+                {id:3, price:'18,00', name:'spagetty', img:''},
+              ]}
+            />
+
+            <Section 
+              key={3}
+              name='Diner'
+              data={[{id:4, price:'18,00', name:'spagetty', img:''}, 
+                {id:1, price:'18,00', name:'spagetty', img:''},
+                {id:2, price:'18,00', name:'spagetty', img:''},
+                {id:3, price:'18,00', name:'spagetty', img:''},
+              ]}
+            />
+          </div>
+        </main>
+        
+        <Footer/>
+
+      </div>
     </Container>
   )
 }

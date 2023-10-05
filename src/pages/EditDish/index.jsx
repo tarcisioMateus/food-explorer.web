@@ -27,7 +27,7 @@ export function EditDish({}) {
         <Form>
           <InputFile
             label='Image of the dish'
-            inputText='Select image to change it'
+            inputText='Select image to replace it'
           />
           <InputWrapper
             label='Name'
@@ -65,6 +65,7 @@ export function EditDish({}) {
             label='Description'
             placeholder='Briefly talk about the dish, its ingredients and composition'
           />
+          
           <section id='buttons'>
             <Button
               name='Delete dish'

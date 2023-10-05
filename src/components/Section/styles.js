@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.section`
   padding-left: 2.4rem;
-  width: 42.8rem;
+  width: 100vw;
 
   >h3 {
     font-size: 1.8rem;

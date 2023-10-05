@@ -11,9 +11,8 @@ export const Container = styled.div`
   top: 0;
 
 
-  margin: auto;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   
   display: grid;
   grid-template-areas: "nav" "form" "footer";
