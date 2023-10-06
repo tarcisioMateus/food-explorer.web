@@ -4,7 +4,7 @@ import { Container } from "./styles"
 
 export function Brand({ ...rest }) {
   return (
-    <Container {...rest}>
+    <Container {...rest} className='brand'>
       <img
         src = {BrandSvg}
         alt='light blue hexagon'

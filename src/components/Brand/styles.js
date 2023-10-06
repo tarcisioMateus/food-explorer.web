@@ -48,6 +48,16 @@ export const Container = styled.header`
 
   @media only screen and (${devices.sm}) {
 
+    >img {
+      margin-right: clamp(1rem, 0.2rem + 1.5vw, 1.9rem);
+      width: clamp(3.9rem, .5rem + 5vw, 4.95rem);
+      height: clamp(4.4rem, .4rem + 4.6vw, 4.75rem);
+    }
+
+    >h1 {
+      font-size: clamp(3.6rem, 3rem + 1vw, 4.2rem);
+    }
+
     &.nav {
       >img {
         margin-right: 1rem;

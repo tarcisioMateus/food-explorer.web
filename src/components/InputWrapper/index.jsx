@@ -2,7 +2,7 @@ import { Container } from "./styles"
 
 export function InputWrapper({ label, icon: Icon, className, ...rest }) {
   return (
-    <Container className={ className }>
+    <Container className={`${className} input-wrapper`}>
       { label && <label htmlFor={label}>{label}</label>}
       <div>
         { Icon && <Icon size={20}/>}

@@ -11,6 +11,7 @@ export function SignIn({}) {
       <main>
         <Brand/>
         <Form>
+          <h2>Sign in</h2>
           <InputWrapper
             label='Email'
             type='email'

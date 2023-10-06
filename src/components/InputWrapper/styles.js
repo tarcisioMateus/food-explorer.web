@@ -9,11 +9,12 @@ export const Container = styled.div`
 
   >label {
     font-size: 1.6rem;
+    line-height: 100%;
     font-weight: 400;
     color: ${ ({theme}) => theme.COLORS.LABEL };
 
     display: block;
-    margin-bottom: 0.8rem;
+    margin-bottom: .8rem;
   }
 
   >div {
@@ -38,12 +39,14 @@ export const Container = styled.div`
       outline: none;
       width: 100%;
       padding: 0;
-
+      
       font-size: 1.6rem;
+      line-height: 100%;
       font-weight: 400;
       color: ${ ({theme}) => theme.COLORS.INPUT_T };
 
       &::placeholder {
+        line-height: 100%;
         color: ${ ({theme}) => theme.COLORS.INPUT_T };
       }
       &:invalid {
@@ -59,7 +62,6 @@ export const Container = styled.div`
 
   &.admin {
     >label {
-      line-height: 100%;
       margin-bottom: 1.6rem;
     }
 
