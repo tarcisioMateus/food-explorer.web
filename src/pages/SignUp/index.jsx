@@ -11,6 +11,8 @@ export function SignUp({}) {
       <main>
         <Brand/>
         <Form>
+          <h2>Create your account</h2>
+
           <InputWrapper
             label='Name'
             type='text'
