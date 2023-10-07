@@ -25,7 +25,7 @@ export const Container = styled.header`
     }
 
     >h1 {
-      font-size: clamp(2.1rem, .2rem + 3vw, 2.4rem);
+      font-size: clamp(2.1rem, .3rem + 3.5vw, 2.4rem);
     }
   }
 
@@ -40,7 +40,7 @@ export const Container = styled.header`
     }
 
     >h1 {
-      font-size: clamp(1.5rem, .1rem + 3vw, 2.4rem);
+      font-size: clamp(1.5rem, .2rem + 3.5vw, 2.4rem);
       color: ${ ({theme}) => theme.COLORS.FOOTER_BRAND};
     }
   }
@@ -59,6 +59,7 @@ export const Container = styled.header`
     }
 
     &.nav {
+      white-space: nowrap;
       >img {
         margin-right: 1rem;
       }

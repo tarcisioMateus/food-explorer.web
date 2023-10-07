@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import GlobalStyles from './styles/global'
 
-import { SignUp } from './pages/SignUp'
+import { Home } from './pages/Home'
 import { Item } from './components/Item'
 
 import { FiUpload } from 'react-icons/fi'
@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <SignUp/>
+      <Home/>
     </ThemeProvider>
   </React.StrictMode>
 )

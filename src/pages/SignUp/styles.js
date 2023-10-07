@@ -40,7 +40,7 @@ export const Container = styled.div`
       }
 
       >form {
-        margin-bottom: 2.5vh;
+        margin-bottom: 5rem;
         background-color: ${ ({theme}) => theme.COLORS.NAV_BG};
         padding: clamp(.1rem, 10% + .1rem, 6.4rem);
         border-radius: 1.6rem;
