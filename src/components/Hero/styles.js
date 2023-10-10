@@ -1,7 +1,9 @@
 import styled from "styled-components"
 
+import { devices } from '../../utils/sizeX'
+
 export const Container = styled.div`
-  padding: 4.4rem 1.6rem 0 3.6rem;
+  margin: 4.4rem 1.6rem 0 3.6rem;
   width: 100vw;
 
   >div {
@@ -13,7 +15,7 @@ export const Container = styled.div`
   
     position: relative;
   
-    >img {
+    img {
       position: absolute;
       left: -3rem;
       top: -2.9rem;
@@ -31,6 +33,91 @@ export const Container = styled.div`
         font-size: 1.2rem;
         line-height: 140%;
         font-weight: 400;
+      }
+    }
+  }
+
+  @media only screen and (${devices.sm}) {
+    margin: auto;
+    margin-top: 6rem;
+    width: 81vw;
+    align-self: center;
+
+    >div {
+      padding: 3.6rem 0;
+      padding-left: 28rem;
+      height: 14rem;
+
+      img {
+        position: absolute;
+        left: -4rem;
+        top: -5.9rem;
+      }
+
+      >div {
+        margin-right: .4rem;
+      }
+    }
+  }
+
+  @media only screen and (${devices.md}) {
+    margin: auto;
+    margin-top: 10rem;
+    width: 81vw;
+    align-self: center;
+
+    >div {
+      padding: 4.5rem 0;
+      padding-left: 40rem;
+      height: 20rem;
+
+      img {
+        position: absolute;
+        left: -6rem;
+        top: -10rem;
+      }
+
+      >div {
+        
+        >h2 {
+          font-size: 2.4rem;
+          font-weight: 500;
+          margin-bottom: .5rem;
+        }
+
+        >p {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  @media only screen and (${devices.xl}) {
+    margin: auto;
+    margin-top: 14rem;
+    width: 81vw;
+    align-self: center;
+
+    >div {
+      padding: 8rem 0;
+      padding-left: 60rem;
+      height: 26rem;
+
+      img {
+        position: absolute;
+        left: -8rem;
+        top: -14rem;
+      }
+
+      >div {
+        >h2 {
+          font-size: 4rem;
+          margin-bottom: .8rem;
+        }
+
+        >p {
+          font-size: 1.6rem;
+        }
       }
     }
   }

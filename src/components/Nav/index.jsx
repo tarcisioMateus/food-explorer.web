@@ -19,21 +19,25 @@ export function Nav ({ }) {
 
   return (
     <Container>
-      <ButtonText
-        img={ MenuSvg }
-        onClick={ slideInMenu }
-      />
-      <Brand className='nav'/>
-      <InputWrapper
-        placeholder='search for dishes or ingredients'
-        icon={FiSearch}
-      />
-      <ReceiptButton/>
-      <ButtonText
-        icon={ FiLogOut }
-        iconSize={32}
+      
+      <div>
+        <ButtonText
+          img={ MenuSvg }
+          onClick={ slideInMenu }
         />
-      <Menu/>
+        <Brand className='nav'/>
+        <InputWrapper
+          placeholder='search for dishes or ingredients'
+          icon={FiSearch}
+        />
+        <ReceiptButton/>
+        <ButtonText
+          icon={ FiLogOut }
+          iconSize={32}
+          />
+        <Menu/>
+      </div>
+      
     </Container>
   )
 }
