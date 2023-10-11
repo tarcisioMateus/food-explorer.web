@@ -39,6 +39,8 @@ export default createGlobalStyle`
 
   :root {
     font-size: 62.5%;
+
+    --main-width: 81vw; // devices.sm
   }
 
   body {

@@ -39,7 +39,7 @@ export const Container = styled.nav`
 
     >div {
       margin: auto;
-      width: 81%;
+      width: var(--main-width);
       padding: 2.85rem 0;
       gap: clamp(1.6rem, 2vw + .2rem, 3.2rem);
   

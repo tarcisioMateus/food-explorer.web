@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import { devices } from '../../utils/sizeX'
+
 export const Container = styled.div`
   display: grid;
   grid-template-areas: "nav" "content-scroll";
@@ -25,5 +27,11 @@ export const Container = styled.div`
     }
   }
 
-
+  @media only screen and (${devices.md}) {
+    .body-content {
+      #sections {
+        gap: clamp(2.4rem, 3.5vw + .1rem, 4.6rem);
+      }
+    }
+  }
 `

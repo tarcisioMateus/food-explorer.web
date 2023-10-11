@@ -6,7 +6,7 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function Card ({price, name, img}) {
+export function Card ({price, name, description, img}) {
   return (
     <Container>
       <ButtonText img={HeartSvg}/>
@@ -14,13 +14,18 @@ export function Card ({price, name, img}) {
         src={ img }
         alt={`picture of ${name}`}
       />
-      <h4>{name} <span>{" >"}</span></h4>
+
+      <h4>{name} <span>{">"}</span></h4>
+      <p>{description}</p>
       <p> <span>{'R$'} </span>{price}</p>
-      <Stepper/>
-      <Button 
-        className='card'
-        name='add'
-      />
+      
+      <div>
+        <Stepper/>
+        <Button 
+          className='card'
+          name='add'
+        />
+      </div>
     </Container>
   )
 }

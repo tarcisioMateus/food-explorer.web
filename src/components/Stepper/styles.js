@@ -10,7 +10,7 @@ export const Container = styled.div`
   margin-bottom: 0.4rem;
 
   >span {
-    font-size: 1.6rem;
+    font-size: clamp(1.6rem, 2.2vw + .2rem, 2rem);
   }
   
   &.dish {

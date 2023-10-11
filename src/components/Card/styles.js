@@ -1,9 +1,11 @@
 import styled from "styled-components"
 
+import { devices } from '../../utils/sizeX'
+
 export const Container = styled.div`
   padding: 2.4rem;
-  min-width: 21rem;
-  min-height: 29.2rem;
+  width: clamp(21rem, 30vw + .1rem , 30.4rem);
+  height: clamp(29.2rem, 45vw + .1rem, 46.2rem); 
 
   display: flex;
   flex-direction: column;
@@ -22,8 +24,8 @@ export const Container = styled.div`
   }
 
   >img {
-    width: 8.8rem;
-    height: 8.8rem;
+    width: clamp(8.8rem, .1rem + 15vw, 17.6rem);
+    height: clamp(8.8rem, .1rem + 15vw, 17.6rem);
     border-radius: 50%;
     object-fit: cover;
   }
@@ -32,10 +34,65 @@ export const Container = styled.div`
     font-size: 1.4rem;
     line-height: 2.4rem;
     font-weight: 500;
+
+    >span{
+      margin-left: .8rem;
+    }
   }
 
-  >p {
+  >p:first-of-type {
+    display: none;
+  }
+
+  >p:last-of-type {
     color: ${ ({theme}) => theme.COLORS.SPAN};
     line-height: 100%;
+    font-size: 1.6rem;
+  }
+
+  >div:last-of-type {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+
+  @media only screen and (${devices.sm}) {
+
+    gap: clamp(1.2rem, 1.8vw + .1rem, 1.5rem);
+
+    >h4 {
+      font-size: clamp(1.4rem, 2.2vw + .1rem , 2.4rem);
+      line-height: 140%;
+      font-weight: 700;
+    }
+
+    >p:last-of-type {
+      font-size: clamp(1.6rem, 2.5vw + .1rem, 3.2rem);
+      line-height: 160%;
+    }
+  }
+
+  @media only screen and (${devices.md}) {
+    
+    >p:first-of-type {
+      display: inline-block;
+      font-size: 1.4rem;
+      line-height: 160%;
+      color: ${ ({theme}) => theme.COLORS.LABEL};
+    }
+    
+    >div:last-of-type {
+      flex-direction: row;
+      gap: 1.6rem;
+
+      >button:last-of-type {
+        width: clamp(50%, 50%, 9.2rem);
+        height: clamp(3.6rem, 4.5vw + .1rem , 4.8rem);
+      }
+    }
+
   }
 `

@@ -12,9 +12,9 @@ export function Hero({}) {
       <div>
 
         <picture>
-          <source media={`(${devices.xl})`} srcset={ ImgXl }/>
-          <source media={`(${devices.md})`} srcset={ ImgMd }/>
-          <source media={`(${devices.sm})`} srcset={ ImgSm }/>
+          <source media={`(${devices.xl})`} srcSet={ ImgXl }/>
+          <source media={`(${devices.md})`} srcSet={ ImgMd }/>
+          <source media={`(${devices.sm})`} srcSet={ ImgSm }/>
           <img src={Img} alt='colorful macarons and berries in free fall'/>
         </picture>
 

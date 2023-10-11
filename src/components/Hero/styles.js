@@ -63,7 +63,7 @@ export const Container = styled.div`
   @media only screen and (${devices.md}) {
     margin: auto;
     margin-top: 10rem;
-    width: 81vw;
+    width: var(--main-width);
     align-self: center;
 
     >div {
@@ -78,7 +78,7 @@ export const Container = styled.div`
       }
 
       >div {
-        
+
         >h2 {
           font-size: 2.4rem;
           font-weight: 500;
