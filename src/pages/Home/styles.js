@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
-import { devices } from '../../utils/sizeX'
+import { DEVICES } from "../../styles/responsiveX"
+
 
 export const Container = styled.div`
   display: grid;
@@ -27,7 +28,7 @@ export const Container = styled.div`
     }
   }
 
-  @media only screen and (${devices.md}) {
+  @media only screen and (${DEVICES.md}) {
     .body-content {
       #sections {
         gap: clamp(2.4rem, 3.5vw + .1rem, 4.6rem);

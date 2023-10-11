@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { devices } from "../../utils/sizeX"
+import { DEVICES } from "../../styles/responsiveX"
 
 export const Container = styled.nav`
   grid-area: nav;
@@ -35,7 +35,7 @@ export const Container = styled.nav`
 
 
 
-  @media only screen and (${devices.sm}) {
+  @media only screen and (${DEVICES.sm}) {
 
     >div {
       margin: auto;
@@ -55,7 +55,7 @@ export const Container = styled.nav`
     }
   }
 
-  @media only screen and (${devices.lg}) {
+  @media only screen and (${DEVICES.lg}) {
     >div {
       gap: clamp(1.6rem, 1vw + .1rem, 3.2rem);
     }

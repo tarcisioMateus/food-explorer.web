@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { devices } from "../../utils/sizeX"
+import { DEVICES } from "../../styles/responsiveX"
 
 export const Container = styled.section`
   padding-left: 2.4rem;
@@ -23,7 +23,7 @@ export const Container = styled.section`
     }
   }
 
-  @media only screen and (${devices.sm}) {
+  @media only screen and (${DEVICES.sm}) {
     width: var(--main-width);
     padding: 0;
     margin: auto;

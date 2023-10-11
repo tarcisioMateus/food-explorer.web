@@ -7,7 +7,7 @@ const breakpoints = {
   "2xl": "1536px",
 }
 
-export const devices = {
+export const DEVICES = {
   xs: `min-width: ${breakpoints.xs}`,
   sm: `min-width: ${breakpoints.sm}`,
   md: `min-width: ${breakpoints.md}`,

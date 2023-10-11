@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
-import { devices } from '../../utils/sizeX'
+import { DEVICES } from "../../styles/responsiveX"
+
 
 export const Container = styled.div`
   padding: 2.4rem;
@@ -59,7 +60,7 @@ export const Container = styled.div`
     gap: 1.2rem;
   }
 
-  @media only screen and (${devices.sm}) {
+  @media only screen and (${DEVICES.sm}) {
 
     gap: clamp(1.2rem, 1.8vw + .1rem, 1.5rem);
 
@@ -75,7 +76,7 @@ export const Container = styled.div`
     }
   }
 
-  @media only screen and (${devices.md}) {
+  @media only screen and (${DEVICES.md}) {
     
     >p:first-of-type {
       display: inline-block;

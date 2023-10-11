@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { devices } from "../../utils/sizeX"
+import { DEVICES } from "../../styles/responsiveX"
 
 export const Container = styled.div`
   display: grid;
@@ -19,7 +19,7 @@ export const Container = styled.div`
     align-items: center;
   }
 
-  @media only screen and (${devices.lg}) {
+  @media only screen and (${DEVICES.lg}) {
     >main {
       width: 100vw;
       display: grid;

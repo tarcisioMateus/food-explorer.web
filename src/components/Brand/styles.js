@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { devices } from "../../utils/sizeX"
+import { DEVICES } from "../../styles/responsiveX"
 
 export const Container = styled.header`
   display: flex;
@@ -46,7 +46,7 @@ export const Container = styled.header`
   }
 
 
-  @media only screen and (${devices.sm}) {
+  @media only screen and (${DEVICES.sm}) {
 
     >img {
       margin-right: clamp(1rem, 0.2rem + 1.5vw, 1.9rem);

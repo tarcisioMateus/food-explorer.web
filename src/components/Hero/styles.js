@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { devices } from '../../utils/sizeX'
+import { DEVICES } from "../../styles/responsiveX"
 
 export const Container = styled.div`
   margin: 4.4rem 1.6rem 0 3.6rem;
@@ -37,7 +37,7 @@ export const Container = styled.div`
     }
   }
 
-  @media only screen and (${devices.sm}) {
+  @media only screen and (${DEVICES.sm}) {
     margin: auto;
     margin-top: 6rem;
     width: 81vw;
@@ -60,7 +60,7 @@ export const Container = styled.div`
     }
   }
 
-  @media only screen and (${devices.md}) {
+  @media only screen and (${DEVICES.md}) {
     margin: auto;
     margin-top: 10rem;
     width: var(--main-width);
@@ -92,7 +92,7 @@ export const Container = styled.div`
     }
   }
 
-  @media only screen and (${devices.xl}) {
+  @media only screen and (${DEVICES.xl}) {
     margin: auto;
     margin-top: 14rem;
     width: 81vw;

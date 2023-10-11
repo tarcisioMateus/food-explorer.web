@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
-import { devices } from '../../utils/sizeX'
+import { DEVICES } from "../../styles/responsiveX"
+
 
 export const Container = styled.button`
   background: none;
@@ -29,7 +30,7 @@ export const Container = styled.button`
     font-weight: 500;
   }
 
-  @media only screen and (${devices.lg}) {
+  @media only screen and (${DEVICES.lg}) {
     background-color: ${ ({theme}) => theme.COLORS.BUTTON_BG};
 
     display: flex;
