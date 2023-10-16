@@ -25,42 +25,47 @@ export function EditDish({}) {
         <h2>Edit Dish</h2>
 
         <Form>
-          <InputFile
-            label='Image of the dish'
-            inputText='Select image to replace it'
-          />
-          <InputWrapper
-            label='Name'
-            placeholder='E.g. Strawberry Ice Cream'
-            className='admin'
-          />
-          <Select
-            label='Category'
-            options={['Dessert', 'Dinner', 'Snack', 'Drink', 'Meal', 'Breakfast']}
-          />
 
-          <section id='items'>
-            <label>{'Ingredients'}</label>
-            <div>
-              { ingredients && 
-                ingredients.map( (ingredient, index) => {
-                  return (
-                    <Item
-                      value={ingredient}
-                      key={index}
-                    />
-                  )
-                })
-              }
-              <Item isNew />
-            </div>
-          </section>
+          <div className="first">
+            <InputFile
+              label='Image of the dish'
+              inputText='Select image to replace it'
+            />
+            <InputWrapper
+              label='Name'
+              placeholder='E.g. Strawberry Ice Cream'
+              className='admin'
+            />
+            <Select
+              label='Category'
+              options={['Dessert', 'Dinner', 'Snack', 'Drink', 'Meal', 'Breakfast']}
+            />
+          </div>
 
-          <InputWrapper
-            label='Price'
-            placeholder='R$ 00,00'
-            className='admin'
-          />
+          <div className="second">
+            <section id='items'>
+              <label>{'Ingredients'}</label>
+              <div>
+                { ingredients && 
+                  ingredients.map( (ingredient, index) => {
+                    return (
+                      <Item
+                        value={ingredient}
+                        key={index}
+                      />
+                    )
+                  })
+                }
+                <Item isNew />
+              </div>
+            </section>
+
+            <InputWrapper
+              label='Price'
+              placeholder='R$ 00,00'
+              className='admin'
+            />
+          </div>
           <TextArea
             label='Description'
             placeholder='Briefly talk about the dish, its ingredients and composition'
