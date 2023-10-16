@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   width: fit-content;
-  height: min-content;
+  height: 3.2rem;
 
   input {
     background: transparent;

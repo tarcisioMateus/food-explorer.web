@@ -6,9 +6,9 @@ export const Container = styled.div`
   align-items: flex-start;
   width: 100%;
 
-
   >label {
     font-size: 1.6rem;
+    line-height: 100%;
     font-weight: 400;
     color: ${ ({theme}) => theme.COLORS.LABEL };
 
@@ -25,6 +25,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    height: 4.8rem;
 
     color: ${ ({theme}) => theme.COLORS.LABEL };
     font-size: 1.4rem;

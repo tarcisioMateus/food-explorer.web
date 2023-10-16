@@ -105,6 +105,7 @@ export const Content = styled.main`
     margin: 0 auto;
 
     >div {
+      margin-top: clamp( 1.6rem, 3vw, 4.2rem);
       flex-direction: row;
       gap: clamp(2rem, 4%, 4.8rem);
 

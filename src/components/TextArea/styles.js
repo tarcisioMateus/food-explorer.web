@@ -9,6 +9,8 @@ export const Container = styled.div`
 
   >label {
     font-size: 1.6rem;
+    line-height: 100%;
+
     font-weight: 400;
     color: ${ ({theme}) => theme.COLORS.LABEL };
 

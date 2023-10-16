@@ -7,6 +7,7 @@ export const Container = styled.div`
 
   >label:first-of-type {
     font-size: 1.6rem;
+    line-height: 100%;
     font-weight: 400;
     color: ${ ({theme}) => theme.COLORS.LABEL };
 
@@ -23,6 +24,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    white-space: nowrap;
 
     color: ${ ({theme}) => theme.COLORS.ICON_BUTTON };
     font-size: 1.4rem;
