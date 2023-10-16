@@ -2,7 +2,7 @@ import Img from '../../assets/hero.png'
 import ImgSm from '../../assets/hero_sm.png'
 import ImgMd from '../../assets/hero_md.png'
 import ImgXl from '../../assets/hero_xl.png'
-import { devices } from '../../utils/sizeX'
+import { DEVICES } from "../../styles/responsiveX"
 
 import { Container } from "./styles"
 
@@ -12,9 +12,9 @@ export function Hero({}) {
       <div>
 
         <picture>
-          <source media={`(${devices.xl})`} srcSet={ ImgXl }/>
-          <source media={`(${devices.md})`} srcSet={ ImgMd }/>
-          <source media={`(${devices.sm})`} srcSet={ ImgSm }/>
+          <source media={`(${DEVICES.xl})`} srcSet={ ImgXl }/>
+          <source media={`(${DEVICES.md})`} srcSet={ ImgMd }/>
+          <source media={`(${DEVICES.sm})`} srcSet={ ImgSm }/>
           <img src={Img} alt='colorful macarons and berries in free fall'/>
         </picture>
 

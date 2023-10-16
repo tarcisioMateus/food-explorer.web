@@ -40,7 +40,7 @@ export const Container = styled.div`
   @media only screen and (${DEVICES.sm}) {
     margin: auto;
     margin-top: 6rem;
-    width: 81vw;
+    width: var(--main-width);
     align-self: center;
 
     >div {
@@ -95,7 +95,7 @@ export const Container = styled.div`
   @media only screen and (${DEVICES.xl}) {
     margin: auto;
     margin-top: 14rem;
-    width: 81vw;
+    width: var(--main-width);
     align-self: center;
 
     >div {
