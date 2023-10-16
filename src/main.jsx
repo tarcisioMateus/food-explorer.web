@@ -5,15 +5,14 @@ import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import GlobalStyles from './styles/global'
 
-import { Home } from './pages/Home'
-import { Item } from './components/Item'
+import { Dish } from './pages/Dish'
 
-import { FiUpload } from 'react-icons/fi'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <Home/>
+      <Dish
+      img='spaguetty img' name='spaguetty' description='spaguetty dish spaguetty dish spaguetty dish spaguetty dish spaguetty dish spaguetty dish spaguetty dish spaguetty dish' price='18,00' tags={['water', 'wine', 'macarons', 'a lot of things']}/>
     </ThemeProvider>
   </React.StrictMode>
 )

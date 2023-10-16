@@ -19,27 +19,39 @@ export function Dish({img, name, description, price, tags}) {
         <ButtonText 
           icon={PiCaretLeft} name='return'
         />
-        <img src={img} alt={`picture of a ${name}`} />
-        <h2>{name}</h2>
-        <p>{description}</p>
-        <div id='tags'>
-          {
-            tags.map( (name, index) => {
-              return (
-                <Tag name={name} key={index}/>
-              )
-            })
-          }
-        </div>
+
         <div>
-          <Stepper
-            iconSize={27}
-            className='dish'
-          />
-          <Button
-            img={ReceiptSvg}
-            name={`buy ∙ R$ ${price}`}
-          />
+
+          <img src={img} alt={`picture of a ${name}`} />
+
+          <div>
+
+            <h2>{name}</h2>
+            <p>{description}</p>
+
+            <div id='tags'>
+              {
+                tags.map( (name, index) => {
+                  return (
+                    <Tag name={name} key={index}/>
+                  )
+                })
+              }
+            </div>
+
+            <div>
+              <Stepper
+                iconSize={27}
+                className='dish'
+              />
+              <Button
+                img={ReceiptSvg}
+                name={`buy ∙ R$ ${price}`}
+              />
+            </div>
+
+          </div>
+
         </div>
       </Content>
       <Footer/>
