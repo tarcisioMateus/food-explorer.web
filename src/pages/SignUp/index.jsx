@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { Brand } from '../../components/Brand'
 import { InputWrapper } from "../../components/InputWrapper"
 import { Button } from "../../components/Button"
@@ -6,6 +8,8 @@ import { ButtonText } from "../../components/ButtonText"
 import { Container, Form } from "./styles"
 
 export function SignUp({}) {
+  const navigate = useNavigate()
+
   return (
     <Container>
       <main>
@@ -43,6 +47,7 @@ export function SignUp({}) {
 
           <ButtonText
             name='Already have an account'
+            onClick= { () => navigate('/')}
           />
         </Form>
       </main>
