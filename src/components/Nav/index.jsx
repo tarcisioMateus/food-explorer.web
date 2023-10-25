@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { FiSearch ,FiLogOut } from 'react-icons/fi'
 
 import MenuSvg from '../../assets/menu.svg'
@@ -12,10 +14,7 @@ import { Menu } from '../../pages/Menu'
 import { Container } from "./styles"
 
 export function Nav ({ }) {
-
-  function slideInMenu() {
-    document.getElementById('menu').style.setProperty('--x-position', "0%")
-  }
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   return (
     <Container>
@@ -23,7 +22,7 @@ export function Nav ({ }) {
       <div>
         <ButtonText
           img={ MenuSvg }
-          onClick={ slideInMenu }
+          onClick={() => setMenuIsOpen(true)}
         />
         <Brand className='nav'/>
         <InputWrapper
@@ -35,7 +34,10 @@ export function Nav ({ }) {
           icon={ FiLogOut }
           iconSize={32}
           />
-        <Menu/>
+        <Menu
+          menuIsOpen={menuIsOpen}
+          onCloseMenu={() => setMenuIsOpen(false)}
+        />
       </div>
       
     </Container>

@@ -6,17 +6,16 @@ import { Footer } from "../../components/Footer"
 
 import { Container, Form } from "./styles"
 
-export function Menu ({ slide }) {
-
-  function slideOut() {
-    document.getElementById('menu').style.setProperty('--x-position', "-100%")
-  }
+export function Menu ({ menuIsOpen, onCloseMenu }) {
 
   return (
-    <Container id='menu'>
+    <Container id='menu' data-menu-is-open={menuIsOpen}>
 
       <div>
-        <ButtonText icon={ FiX } onClick={slideOut}/>
+        <ButtonText 
+          icon={ FiX } 
+          onClick={onCloseMenu}
+        />
         <h3>Menu</h3>
       </div>
 

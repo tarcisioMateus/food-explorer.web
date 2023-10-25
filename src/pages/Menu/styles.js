@@ -1,15 +1,20 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  --x-position: -100%;
   background-color: ${ ({theme}) => theme.COLORS.BG};
 
   transition: all 400ms;
   position: absolute;
   z-index: 1000;
-  left: var(--x-position);
+  left: 0;
   top: 0;
 
+  transform: translateX(-100%);
+  transition: transform .3s ease-in-out ;
+
+  &[data-menu-is-open="true"] {
+    transform: translateX(0%)
+  }
 
   height: 100vh;
   width: 100vw;
