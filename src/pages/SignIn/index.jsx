@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
 
 import { Brand } from '../../components/Brand'
 import { InputWrapper } from "../../components/InputWrapper"
@@ -8,7 +10,16 @@ import { ButtonText } from "../../components/ButtonText"
 import { Container, Form } from "./styles"
 
 export function SignIn({}) {
+  const { signIn } = useAuth()
+
   const navigate = useNavigate()
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  async function handleSignIn() {
+    await signIn({ email, password })
+  }
 
   return (
     <Container>
@@ -20,21 +31,21 @@ export function SignIn({}) {
             label='Email'
             type='email'
             placeholder='example: example@example.com'
-            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
             required
+            onChange={ e => setEmail(e.target.value)}
           />
 
           <InputWrapper
             label='Password'
             type='password'
             placeholder='at least 6 characters'
-            pattern=".{6,18}"
             required
+            onChange={ e => setPassword(e.target.value)}
           />
 
           <Button
-            type='submit'
             name='Sign In'
+            onClick={handleSignIn}
           />
 
           <ButtonText

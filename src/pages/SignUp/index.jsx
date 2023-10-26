@@ -18,6 +18,8 @@ export function SignUp({}) {
 
   function handleSignUp() {
     if( !name || !email || !password) return alert("fill in all fields!")
+    if( !( /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) ) ) return alert("invalid email format")
+    if( password.length < 6 || password.length > 18 ) return alert("the password must have from 6 to 18 characters")
 
     api.post('/users', {name, email, password}).then(
       () => {
@@ -52,7 +54,6 @@ export function SignUp({}) {
             label='Email'
             type='email'
             placeholder='example: example@example.com'
-            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
             required
             onChange={ e => setEmail(e.target.value)}
           />
@@ -67,7 +68,6 @@ export function SignUp({}) {
           />
 
           <Button
-            type='submit'
             name='Sign Up'
             onClick={handleSignUp}
           />
