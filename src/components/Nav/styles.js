@@ -33,6 +33,20 @@ export const Container = styled.nav`
     }
   }
 
+  &[data-role="admin"] {
+    >div {
+
+      .brand {
+        margin: auto;
+      }
+
+      .new-dish {
+        display: none;
+        max-width: 10rem;
+      }
+    }
+  }
+
 
 
   @media only screen and (${DEVICES.sm}) {
@@ -51,6 +65,19 @@ export const Container = styled.nav`
       >.input-wrapper,
       >button:last-of-type {
         display: inline;
+      }
+    }
+
+    &[data-role="admin"] {
+      >div {
+
+        .brand {
+          margin: 0;
+        }
+
+        .new-dish {
+          display: inline-block;
+        }
       }
     }
   }

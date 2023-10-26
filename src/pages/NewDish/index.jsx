@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { PiCaretLeft } from 'react-icons/pi'
 
 import { Nav } from '../../components/Nav'
@@ -15,12 +17,15 @@ import { Container, Form } from "./styles"
 export function NewDish({}) {
   const ingredients = ['honey', 'grapes', 'milk', 'eggs', 'juice']
 
+  const navigate = useNavigate()
+
   return (
     <Container>
       <Nav/>
       <main>
         <ButtonText
           icon={PiCaretLeft} name='return'
+          onClick={ () => navigate('-1')}
         />
         <h2>New Dish</h2>
 
