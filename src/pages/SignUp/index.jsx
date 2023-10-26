@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { api } from '../../services'
 
 import { Brand } from '../../components/Brand'
 import { InputWrapper } from "../../components/InputWrapper"
@@ -8,7 +10,28 @@ import { ButtonText } from "../../components/ButtonText"
 import { Container, Form } from "./styles"
 
 export function SignUp({}) {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
   const navigate = useNavigate()
+
+  function handleSignUp() {
+    if( !name || !email || !password) return alert("fill in all fields!")
+
+    api.post('/users', {name, email, password}).then(
+      () => {
+        alert('successfully registered user!')
+        navigate('/')
+      }
+    ).catch( error => {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert('unable to create account')
+      }
+    })
+  }
 
   return (
     <Container>
@@ -22,6 +45,7 @@ export function SignUp({}) {
             type='text'
             placeholder='example: Mary Jane'
             required
+            onChange={ e => setName(e.target.value)}
           />
 
           <InputWrapper
@@ -30,6 +54,7 @@ export function SignUp({}) {
             placeholder='example: example@example.com'
             pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
             required
+            onChange={ e => setEmail(e.target.value)}
           />
 
           <InputWrapper
@@ -38,11 +63,13 @@ export function SignUp({}) {
             placeholder='at least 6 characters'
             pattern=".{6,18}"
             required
+            onChange={ e => setPassword(e.target.value)}
           />
 
           <Button
             type='submit'
             name='Sign Up'
+            onClick={handleSignUp}
           />
 
           <ButtonText
