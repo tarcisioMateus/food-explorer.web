@@ -6,7 +6,7 @@ import { Footer } from "../../components/Footer"
 
 import { Container, Form } from "./styles"
 
-export function Menu ({ menuIsOpen, onCloseMenu }) {
+export function Menu ({ menuIsOpen, onCloseMenu, onSignOut }) {
 
   return (
     <Container id='menu' data-menu-is-open={menuIsOpen}>
@@ -27,6 +27,7 @@ export function Menu ({ menuIsOpen, onCloseMenu }) {
         <ButtonText
           className='menu'
           name='Log out'
+          onClick={onSignOut}
         />
       </Form>
 

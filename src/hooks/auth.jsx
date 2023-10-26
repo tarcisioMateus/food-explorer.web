@@ -4,7 +4,7 @@ import { api } from '../services'
 const AuthContext = createContext({})
 
 function AuthProvider( { children } ) {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState()
 
   async function signIn({ email, password }) {
     try {
@@ -27,6 +27,11 @@ function AuthProvider( { children } ) {
     }
   }
   
+  function signOut() {
+    localStorage.removeItem('@foodExplorer:user')
+    setUser()
+  }
+
   useEffect(() => {
     const user = localStorage.getItem('@foodExplorer:user')
 
@@ -34,7 +39,7 @@ function AuthProvider( { children } ) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ signIn, user }}>
+    <AuthContext.Provider value={{ signIn, signOut, user }}>
       {children}
     </AuthContext.Provider>
   )

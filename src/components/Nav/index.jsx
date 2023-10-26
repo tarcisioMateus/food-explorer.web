@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
 
 import { FiSearch ,FiLogOut } from 'react-icons/fi'
 
@@ -14,7 +16,15 @@ import { Menu } from '../../pages/Menu'
 import { Container } from "./styles"
 
 export function Nav ({ }) {
+  const { signOut } = useAuth()
+
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate('/')
+    signOut()
+  }
 
   return (
     <Container>
@@ -33,10 +43,12 @@ export function Nav ({ }) {
         <ButtonText
           icon={ FiLogOut }
           iconSize={32}
+          onClick={handleSignOut}
           />
         <Menu
           menuIsOpen={menuIsOpen}
           onCloseMenu={() => setMenuIsOpen(false)}
+          onSignOut={ handleSignOut }
         />
       </div>
       
