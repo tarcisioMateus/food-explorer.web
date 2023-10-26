@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import HeartSvg from '../../assets/heart.svg'
 
 import { ButtonText } from "../ButtonText"
@@ -6,17 +7,23 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function Card ({price, name, description, img}) {
-  return (
-    <Container>
-      <ButtonText img={HeartSvg}/>
-      <img 
-        src={ img }
-        alt={`picture of ${name}`}
-      />
+export function Card ({ id, price, name, description, img}) {
+  const navigate = useNavigate()
 
-      <h4>{name} <span>{">"}</span></h4>
-      <p>{description}</p>
+  return (
+    <Container >
+      <ButtonText img={HeartSvg}/>
+      <button
+        onClick={() => navigate(`/dish/${id}`)}
+      >
+        <img 
+          src={ img }
+          alt={`picture of ${name}`}
+        />
+
+        <h4>{name} <span>{">"}</span></h4>
+        <p>{description}</p>
+      </button>
       <p> <span>{'R$'} </span>{price}</p>
       
       <div>

@@ -14,6 +14,7 @@ export function Section({name, data, ...rest}) {
               return (
                 <Card 
                   key={item.id}
+                  id={item.id}
                   price={item.price} 
                   name={item.name} 
                   description={item.description}
