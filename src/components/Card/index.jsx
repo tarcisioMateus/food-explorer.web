@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { api } from '../../services' 
+
 import HeartSvg from '../../assets/heart.svg'
 
 import { ButtonText } from "../ButtonText"
@@ -8,6 +11,8 @@ import { Button } from "../Button"
 import { Container } from "./styles"
 
 export function Card ({ id, price, name, description, img}) {
+  const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
+
   const navigate = useNavigate()
 
   return (
@@ -17,7 +22,7 @@ export function Card ({ id, price, name, description, img}) {
         onClick={() => navigate(`/dish/${id}`)}
       >
         <img 
-          src={ img }
+          src={ avatar }
           alt={`picture of ${name}`}
         />
 
