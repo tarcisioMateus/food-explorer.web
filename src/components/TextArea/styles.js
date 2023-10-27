@@ -37,6 +37,9 @@ export const Container = styled.div`
     &:hover {
       outline: ${ ({theme}) => `2px solid ${theme.COLORS.INPUT_T}` };
     }
+    &:invalid {
+      outline: ${ ({theme}) => `2px solid ${theme.COLORS.BUTTON_ADMIN_BG}` };
+    }
     
     height: 17.2rem;
     resize: none;

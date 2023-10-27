@@ -46,4 +46,11 @@ export const Container = styled.div`
     } 
     
   }
+
+  &:only-child {
+    outline: ${ ({theme}) => `3px solid ${theme.COLORS.BUTTON_ADMIN_BG}` };
+  }
+  &:has(input:not(:placeholder-shown):not(:read-only)) {
+      outline: ${ ({theme}) => `3px solid ${theme.COLORS.BUTTON_ADMIN_BG}` };
+    }
 `

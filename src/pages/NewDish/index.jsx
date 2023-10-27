@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { api } from '../../services' 
 
 import { PiCaretLeft } from 'react-icons/pi'
 
@@ -43,6 +44,45 @@ export function NewDish({}) {
     setAvatarFile(file)
   }
 
+  async function createNewDish({data, avatarFile}) {
+    try {
+      const response = await api.post('/dishes/admin', data, { withCredentials: true })
+      const dish = response.data
+      
+      const fileUpload = new FormData()
+      fileUpload.append('avatar', avatarFile)
+
+      await api.patch(`/dishes/admin/avatar/${dish.id}`, fileUpload, { withCredentials: true })
+
+      alert('new dish added successfully!')
+      navigate('-1')
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert('unable to add new dish right now, try again later!')
+      }
+    }
+  }
+
+  async function handleCreate() {
+    if( !name || !price || !description || !category || !ingredients.length || !avatarFile) {
+      return alert("fill in all fields!")
+    }
+    if (newIngredient) return alert('there is an ingredient, waiting to be added it!')
+
+    const data = {
+      name,
+      price,
+      description,
+      category,
+      ingredients
+    }
+    await createNewDish({data, avatarFile})
+    
+  }
+
   return (
     <Container>
       <Nav/>
@@ -60,6 +100,7 @@ export function NewDish({}) {
               label='Image of the dish'
               inputText={ avatarFile ? 'Change image' : 'Select image'}
               onChange={ event => handleUploadAvatarFile(event)}
+              required
             />
             <InputWrapper
               label='Name'
@@ -67,6 +108,7 @@ export function NewDish({}) {
               className='admin'
               value={name}
               onChange={ e => setName(e.target.value)} 
+              required
             />
             <Select
               label='Category'
@@ -105,6 +147,7 @@ export function NewDish({}) {
               className='admin'
               value={price}
               onChange={ e => setPrice(e.target.value)} 
+              required
             />
           </div>
 
@@ -113,12 +156,12 @@ export function NewDish({}) {
             placeholder='Briefly talk about the dish, its ingredients and composition'
             value={description}
             onChange={ e => setDescription(e.target.value)} 
+            required
           />
           <Button
             name='Save changes'
             className='admin-save'
-            onClick={() =>
-            console.log({name, price, description, category, ingredients, avatarFile})}
+            onClick={ handleCreate }
           />
         </Form>
         

@@ -59,6 +59,9 @@ export const Container = styled.div`
     &:hover {
       outline: ${ ({theme}) => `2px solid ${theme.COLORS.INPUT_T}` };
     }
+    &:has(input:invalid) {
+      outline: ${ ({theme}) => `2px solid ${theme.COLORS.BUTTON_ADMIN_BG}` };
+    }
   }
 
   &.admin {
