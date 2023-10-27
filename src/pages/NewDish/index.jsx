@@ -24,6 +24,8 @@ export function NewDish({}) {
   const [price, setPrice] = useState("")
   const [description, setDescription] = useState("")
 
+  const [avatarFile, setAvatarFile] = useState(null)
+
 
   const navigate = useNavigate()
 
@@ -34,6 +36,11 @@ export function NewDish({}) {
   }
   function handleRemoveIngredient(deleted) {
     setIngredients( prev => prev.filter( ingredient => ingredient !== deleted))
+  }
+
+  function handleUploadAvatarFile(event) {
+    const file = event.target.files[0]
+    setAvatarFile(file)
   }
 
   return (
@@ -51,7 +58,8 @@ export function NewDish({}) {
           <div className="first">
             <InputFile
               label='Image of the dish'
-              inputText='Select image'
+              inputText={ avatarFile ? 'Change image' : 'Select image'}
+              onChange={ event => handleUploadAvatarFile(event)}
             />
             <InputWrapper
               label='Name'
@@ -110,7 +118,7 @@ export function NewDish({}) {
             name='Save changes'
             className='admin-save'
             onClick={() =>
-            console.log({name, price, description, category, ingredients})}
+            console.log({name, price, description, category, ingredients, avatarFile})}
           />
         </Form>
         
