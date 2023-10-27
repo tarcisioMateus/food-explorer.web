@@ -18,7 +18,7 @@ export function Section({name, data, ...rest}) {
                   price={item.price} 
                   name={item.name} 
                   description={item.description}
-                  img={item.img}
+                  img={item.avatar}
                 />
               )
             })
