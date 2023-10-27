@@ -19,6 +19,12 @@ export function NewDish({}) {
   const [ingredients, setIngredients] = useState([])
   const [ newIngredient, setNewIngredient ] = useState("")
 
+  const [name, setName] = useState("")
+  const [category, setCategory] = useState("dinner")
+  const [price, setPrice] = useState("")
+  const [description, setDescription] = useState("")
+
+
   const navigate = useNavigate()
 
   function handleAddIngredient() {
@@ -51,10 +57,13 @@ export function NewDish({}) {
               label='Name'
               placeholder='E.g. Strawberry Ice Cream'
               className='admin'
+              value={name}
+              onChange={ e => setName(e.target.value)} 
             />
             <Select
               label='Category'
-              options={['Dessert', 'Dinner', 'Snack', 'Drink', 'Meal', 'Breakfast']}
+              options={['dinner', 'lunch', 'breakfast', 'dessert', 'vegetarian', 'barbecue', 'drink']}
+              onChange={(e) => setCategory(e.target.value)}
             />
           </div>
 
@@ -86,17 +95,22 @@ export function NewDish({}) {
               label='Price'
               placeholder='R$ 00,00'
               className='admin'
+              value={price}
+              onChange={ e => setPrice(e.target.value)} 
             />
           </div>
 
           <TextArea
             label='Description'
             placeholder='Briefly talk about the dish, its ingredients and composition'
+            value={description}
+            onChange={ e => setDescription(e.target.value)} 
           />
           <Button
-            type='submit'
             name='Save changes'
             className='admin-save'
+            onClick={() =>
+            console.log({name, price, description, category, ingredients})}
           />
         </Form>
         
