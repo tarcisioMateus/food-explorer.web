@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { PiCaretLeft } from 'react-icons/pi'
@@ -15,9 +16,19 @@ import { Footer } from '../../components/Footer'
 import { Container, Form } from "./styles"
 
 export function NewDish({}) {
-  const ingredients = ['honey', 'grapes', 'milk', 'eggs', 'juice']
+  const [ingredients, setIngredients] = useState([])
+  const [ newIngredient, setNewIngredient ] = useState("")
 
   const navigate = useNavigate()
+
+  function handleAddIngredient() {
+    if (!newIngredient) return
+    setIngredients( prev => [ ...prev, newIngredient])
+    setNewIngredient("")
+  }
+  function handleRemoveIngredient(deleted) {
+    setIngredients( prev => prev.filter( ingredient => ingredient !== deleted))
+  }
 
   return (
     <Container>
@@ -57,11 +68,17 @@ export function NewDish({}) {
                       <Item
                         value={ingredient}
                         key={index}
+                        onClick={() => handleRemoveIngredient(ingredient)}
                       />
                     )
                   })
                 }
-                <Item isNew />
+                <Item 
+                  isNew 
+                  value={newIngredient}
+                  onClick={handleAddIngredient} 
+                  onChange={ e => setNewIngredient(e.target.value)}
+                />
               </div>
             </section>
 
