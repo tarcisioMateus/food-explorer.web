@@ -25,6 +25,7 @@ export const Container = styled.div`
   }
 
   >button:nth-of-type(2) {
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,6 +44,9 @@ export const Container = styled.div`
       font-size: 1.4rem;
       line-height: 2.4rem;
       font-weight: 500;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
   
       >span{
         margin-left: .8rem;
@@ -96,6 +100,8 @@ export const Container = styled.div`
 
       >p:first-of-type {
         display: inline-block;
+        height: 6.8rem;
+        overflow-y: hidden;
         font-size: 1.4rem;
         line-height: 160%;
         color: ${ ({theme}) => theme.COLORS.LABEL};
