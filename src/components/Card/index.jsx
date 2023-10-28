@@ -46,13 +46,16 @@ export function Card ({ id, price, name, description, img}) {
       </button>
       <p> <span>{'R$ '} </span>{price}</p>
       
-      <div>
-        <Stepper/>
-        <Button 
-          className='card'
-          name='add'
-        />
-      </div>
+      {
+        ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
+        <div>
+          <Stepper/>
+          <Button 
+            className='card'
+            name='add'
+          />
+        </div>
+      }
     </Container>
   )
 }

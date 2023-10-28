@@ -36,8 +36,9 @@ export const Content = styled.main`
     justify-content: center;
   
     >img {
-      min-width: clamp( 20rem, 60vw, 26.4rem);
-      min-height: clamp( 20rem, 60vw, 26.4rem);
+      --size: clamp( 20rem, 60vw, 26.4rem);
+      width: var(--size);
+      height: var(--size);
       border-radius: 50%;
       object-fit: cover;
       margin: 1.6rem 0;
@@ -96,6 +97,10 @@ export const Content = styled.main`
           }
         } 
       }
+
+      .edit-button {
+        max-width: 20rem;
+      }
     }
   }
 
@@ -110,8 +115,7 @@ export const Content = styled.main`
       gap: clamp(2rem, 4%, 4.8rem);
 
       >img {
-        min-width: clamp( 20rem, 35vw, 39rem);
-        min-height: clamp( 20rem, 35vw, 39rem);
+        --size: clamp( 20rem, 35vw, 39rem);
         margin: 0;
       }
 
