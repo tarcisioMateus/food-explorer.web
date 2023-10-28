@@ -143,7 +143,7 @@ export function NewDish({}) {
 
             <InputWrapper
               label='Price'
-              placeholder='R$ 00,00'
+              placeholder='00,00'
               className='admin'
               value={price}
               onChange={ e => setPrice(e.target.value)} 

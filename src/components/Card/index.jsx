@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
+import { USER_ROLE } from '../../utils/roles'
 import { api } from '../../services' 
 
 import HeartSvg from '../../assets/heart.svg'
+import PencilSvg from '../../assets/pencil.svg'
 
 import { ButtonText } from "../ButtonText"
 import { Stepper } from "../Stepper"
@@ -11,13 +14,25 @@ import { Button } from "../Button"
 import { Container } from "./styles"
 
 export function Card ({ id, price, name, description, img}) {
+  const { user } = useAuth()
+
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
 
   const navigate = useNavigate()
 
   return (
     <Container >
-      <ButtonText img={HeartSvg}/>
+      {
+        ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
+        <ButtonText img={HeartSvg}/> 
+      }
+      {
+        ( [USER_ROLE.ADMIN].includes(user.role) ) &&
+        <ButtonText 
+          img={PencilSvg}
+          onClick={() => navigate(`/editDish/${id}`)}
+        /> 
+      }
       <button
         onClick={() => navigate(`/dish/${id}`)}
       >
@@ -29,7 +44,7 @@ export function Card ({ id, price, name, description, img}) {
         <h4>{name} <span>{">"}</span></h4>
         <p>{description}</p>
       </button>
-      <p> <span>{'R$'} </span>{price}</p>
+      <p> <span>{'R$ '} </span>{price}</p>
       
       <div>
         <Stepper/>

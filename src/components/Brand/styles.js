@@ -19,6 +19,7 @@ export const Container = styled.header`
       color: ${ ({theme}) => theme.COLORS.H1};
       font-weight: 700;
       font-size: 3.6rem;
+      white-space: nowrap;
     }
 
     >p {
