@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../services'
+import { searchForDishes } from '../../utils/searchForDishes'
 
 import { Nav } from '../../components/Nav'
 import { Hero } from '../../components/Hero'
@@ -10,7 +11,14 @@ import { Container } from './styles'
 
 export function Home({ }) {
   const [categories, setCategories] = useState([])
+  const [search, setSearch] = useState('')
+  const [data, setData] = useState(null)
 
+
+  function handleHomeSearch(event) {
+    const latestSearch = event.target.value
+    setSearch(latestSearch)
+  }
 
   useEffect(() => {
     async function fetchCategories() {
@@ -28,12 +36,28 @@ export function Home({ }) {
       }
     }
 
+    function continueSearchThatStartedOutOfHome() {
+
+      const latestSearch = localStorage.getItem('@foodExplorer:search')
+      if (latestSearch) {
+        const inputSearch = document.getElementById('Search')
+        inputSearch.value = latestSearch
+        inputSearch.focus()
+  
+        setSearch(latestSearch)
+        localStorage.removeItem('@foodExplorer:search')
+      }
+    }
+
     fetchCategories()
+    continueSearchThatStartedOutOfHome()
   }, [])
 
   return (
     <Container>
-      <Nav/>
+      <Nav
+        handleHomeSearch= {handleHomeSearch}
+      />
       <div className='body-content'>
 
         <main>

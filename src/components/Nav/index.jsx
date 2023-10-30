@@ -17,7 +17,7 @@ import { Menu } from '../../pages/Menu'
 
 import { Container } from "./styles"
 
-export function Nav ({ }) {
+export function Nav ({ handleHomeSearch = null }) {
   const { signOut, user } = useAuth()
 
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -26,6 +26,12 @@ export function Nav ({ }) {
   function handleSignOut() {
     navigate('/')
     signOut()
+  }
+
+  function handleSearchOutOfHome( event ) {
+    const search = event.target.value
+    localStorage.setItem('@foodExplorer:search', search)
+    navigate('/')
   }
 
   return (
@@ -40,6 +46,9 @@ export function Nav ({ }) {
         <InputWrapper
           placeholder='search for dishes or ingredients'
           icon={FiSearch}
+          id='Search'
+          onChange={event => {
+            return ( handleHomeSearch ? handleHomeSearch(event) : handleSearchOutOfHome(event) )} }
         />
         {
           ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
