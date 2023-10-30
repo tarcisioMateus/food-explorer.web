@@ -36,7 +36,7 @@ export const Container = styled.nav`
   &[data-role="admin"] {
     >div {
 
-      .brand {
+      >.brand {
         margin: auto;
       }
 

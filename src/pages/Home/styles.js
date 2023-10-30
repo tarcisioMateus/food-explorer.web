@@ -68,13 +68,13 @@ export const NotFound = styled.div`
   gap: clamp( .5rem, 1vw, 1rem);
 
   >svg {
-    color: ${ ({theme}) => theme.COLORS.INPUT_AUTH_BG };
+    color: ${ ({theme}) => theme.COLORS.INPUT_T };
     font-size: clamp( 8rem, 20vw, 17rem);
   }
 
   >h3 {
     font-size: clamp( 3rem, 9vw, 7rem);
-    color: ${ ({theme}) => theme.COLORS.INPUT_AUTH_BG };
+    color: ${ ({theme}) => theme.COLORS.INPUT_T };
     font-weight: 400;
   }
 `

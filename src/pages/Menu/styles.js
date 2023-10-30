@@ -45,11 +45,40 @@ export const Container = styled.div`
 `
 
 export const Form = styled.form`
+  overflow-y: auto;
+  
   grid-area: form;
   padding: 3.6rem 2.8rem;
+  max-width: 100vw;
 
   >div:first-of-type {
     padding-bottom: 3.6rem;
   }
 
+  .results {
+    >section {
+      max-width: calc( 100vw - (2 * 2.8rem));
+    }
+  }
+
+`
+
+export const NotFound = styled.div`
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp( .5rem, 1vw, 1rem);
+
+  >svg {
+    color: ${ ({theme}) => theme.COLORS.INPUT_T };
+    font-size: clamp( 8rem, 20vw, 17rem);
+  }
+
+  >h3 {
+    font-size: clamp( 3rem, 9vw, 7rem);
+    color: ${ ({theme}) => theme.COLORS.INPUT_T };
+    font-weight: 400;
+  }
 `
