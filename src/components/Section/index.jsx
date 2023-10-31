@@ -2,7 +2,7 @@ import { Card } from '../Card'
 
 import { Container } from "./styles"
 
-export function Section({name, data, favoritesId, ...rest}) {
+export function Section({name, data, favoritesId = [], heart = true, ...rest}) {
   return (
     <Container {...rest}>
       <h3>{name}</h3>
@@ -20,6 +20,7 @@ export function Section({name, data, favoritesId, ...rest}) {
                   description={item.description}
                   img={item.avatar}
                   favorite={ favoritesId.includes(item.id) ? true : false}
+                  heart = {heart}
                 />
               )
             })

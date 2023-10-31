@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { USER_ROLE } from '../../utils/roles'
 import { useAuth } from '../../hooks/auth'
 import { useState, useEffect } from 'react'
-import { api } from '../../services'
 import { searchForDishes } from '../../utils/searchForDishes'
 
 import { PiMaskSadLight } from 'react-icons/pi'
@@ -78,6 +77,7 @@ export function Menu ({ menuIsOpen, onCloseMenu, onSignOut }) {
               <Section
                 name={''}
                 data={data}
+                heart={false}
               />
             }
 

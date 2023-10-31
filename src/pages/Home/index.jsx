@@ -28,7 +28,7 @@ export function Home({ }) {
       const response = await api.get('/favoritesDishes/id', { withCredentials: true })
       const info = response.data
       setFavoritesId( info )
-
+  
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message)
@@ -58,9 +58,6 @@ export function Home({ }) {
         }
       }
     }
-
-
-
     function continueSearchThatStartedOutOfHome() {
 
       const latestSearch = localStorage.getItem('@foodExplorer:search')
@@ -128,6 +125,7 @@ export function Home({ }) {
                 name={'results'}
                 data={data}
                 favoritesId={favoritesId}
+                heart={false}
               />
             }
 

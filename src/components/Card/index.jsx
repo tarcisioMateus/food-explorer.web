@@ -14,7 +14,7 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function Card ({ id, price, name, description, img, favorite }) {
+export function Card ({ id, price, name, description, img, favorite, heart }) {
   const { user } = useAuth()
 
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
@@ -30,27 +30,38 @@ export function Card ({ id, price, name, description, img, favorite }) {
       alert('something went wrong, please try again later!')
     }
   }
+  async function handleRemoveFromFavorites() {
+    try {
+      await api.delete(`/favorites/${id}`, { withCredentials: true })
+      setFavoriteOn( false )
+    } catch (error) {
+      alert('something went wrong, please try again later!')
+    }
+  }
 
   return (
     <Container >
       {
-        ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
+        ( [USER_ROLE.CUSTOMER].includes(user.role) && heart ) &&
         <ButtonText 
+          className='heart'
           img={ favoriteOn ? HeartFilledSvg : HeartSvg }
           onClick={() => {
-            favoriteOn ? '' : handleAddToFavorites()
+            favoriteOn ? handleRemoveFromFavorites() : handleAddToFavorites()
           }}
         /> 
       }
       {
         ( [USER_ROLE.ADMIN].includes(user.role) ) &&
         <ButtonText 
+          className='pencil'
           img={PencilSvg}
           onClick={() => navigate(`/editDish/${id}`)}
         /> 
       }
       <button
         onClick={() => navigate(`/dish/${id}`)}
+        className='img-button'
       >
         <img 
           src={ avatar }

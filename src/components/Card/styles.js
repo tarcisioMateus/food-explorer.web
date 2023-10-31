@@ -16,7 +16,8 @@ export const Container = styled.div`
 
   position: relative;
   
-  >button:first-of-type {
+  >.heart, 
+  .pencil {
     position: absolute;
     right: 1.6rem;
     top: 1.6rem;
@@ -24,7 +25,7 @@ export const Container = styled.div`
     width: min-content;
   }
 
-  >button:nth-of-type(2) {
+  >.img-button {
     max-width: 100%;
     display: flex;
     flex-direction: column;
@@ -78,7 +79,7 @@ export const Container = styled.div`
 
     gap: clamp(1.2rem, 1.8vw + .1rem, 1.5rem);
 
-    >button:nth-of-type(2) {
+    >.img-button {
       gap: clamp(1.2rem, 1.8vw + .1rem, 1.5rem);
 
       >h4 {
@@ -96,7 +97,7 @@ export const Container = styled.div`
 
   @media only screen and (${DEVICES.md}) {
     
-    >button:nth-of-type(2) {
+    >.img-button {
 
       >p:first-of-type {
         display: inline-block;
