@@ -23,7 +23,23 @@ export function Home({ }) {
     setSearch(latestSearch)
   }
 
+  async function fetchFavoritesId() {
+    try {
+      const response = await api.get('/favoritesDishes/id', { withCredentials: true })
+      const info = response.data
+      setFavoritesId( info )
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert('something went wrong, please try again later!')
+      }
+    }
+  }
+
   useEffect(() => {
+    fetchFavoritesId()
     searchForDishes({ search, setData })
   }, [search])
 
@@ -43,20 +59,7 @@ export function Home({ }) {
       }
     }
 
-    async function fetchFavoritesId() {
-      try {
-        const response = await api.get('/favoritesDishes/id', { withCredentials: true })
-        const info = response.data
-        setFavoritesId( info )
 
-      } catch (error) {
-        if (error.response) {
-          alert(error.response.data.message)
-        } else {
-          alert('something went wrong, please try again later!')
-        }
-      }
-    }
 
     function continueSearchThatStartedOutOfHome() {
 
@@ -124,6 +127,7 @@ export function Home({ }) {
               <Section
                 name={'results'}
                 data={data}
+                favoritesId={favoritesId}
               />
             }
 

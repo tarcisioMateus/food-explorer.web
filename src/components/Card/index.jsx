@@ -31,15 +31,6 @@ export function Card ({ id, price, name, description, img, favorite }) {
     }
   }
 
-  async function handleRemoveFromFavorites() {
-    try {
-      await api.delete(`/favorites/${id}`, { withCredentials: true })
-      setFavoriteOn( false )
-    } catch (error) {
-      alert('something went wrong, please try again later!')
-    }
-  }
-
   return (
     <Container >
       {
@@ -47,7 +38,7 @@ export function Card ({ id, price, name, description, img, favorite }) {
         <ButtonText 
           img={ favoriteOn ? HeartFilledSvg : HeartSvg }
           onClick={() => {
-            favoriteOn ? handleRemoveFromFavorites() : handleAddToFavorites()
+            favoriteOn ? '' : handleAddToFavorites()
           }}
         /> 
       }
