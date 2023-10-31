@@ -20,11 +20,23 @@ export function Card ({ id, price, name, description, img}) {
 
   const navigate = useNavigate()
 
+  async function handleAddToFavorites() {
+    try {
+      await api.post(`/favorites/${id}`, { withCredentials: true })
+
+    } catch (error) {
+      alert('something went wrong, please try again later!')
+    }
+  }
+
   return (
     <Container >
       {
         ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
-        <ButtonText img={HeartSvg}/> 
+        <ButtonText 
+          img={HeartSvg}
+          onClick={handleAddToFavorites}
+        /> 
       }
       {
         ( [USER_ROLE.ADMIN].includes(user.role) ) &&
