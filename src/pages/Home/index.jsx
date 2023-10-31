@@ -13,6 +13,7 @@ import { Container, NotFound } from './styles'
 
 export function Home({ }) {
   const [categories, setCategories] = useState([])
+  const [favoritesId, setFavoritesId] = useState([])
   const [search, setSearch] = useState('')
   const [data, setData] = useState([])
 
@@ -37,7 +38,22 @@ export function Home({ }) {
         if (error.response) {
           alert(error.response.data.message)
         } else {
-          alert('unable to add new dish right now, try again later!')
+          alert('something went wrong, please try again later!')
+        }
+      }
+    }
+
+    async function fetchFavoritesId() {
+      try {
+        const response = await api.get('/favoritesDishes/id', { withCredentials: true })
+        const info = response.data
+        setFavoritesId( info )
+
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message)
+        } else {
+          alert('something went wrong, please try again later!')
         }
       }
     }
@@ -55,6 +71,7 @@ export function Home({ }) {
       }
     }
 
+    fetchFavoritesId()
     fetchCategories()
     continueSearchThatStartedOutOfHome()
   }, [])
@@ -84,6 +101,7 @@ export function Home({ }) {
                           key={index}
                           name={key}
                           data={category[key]}
+                          favoritesId={favoritesId}
                         />
                       )
                     }
