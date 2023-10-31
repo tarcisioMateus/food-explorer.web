@@ -59,7 +59,10 @@ export function Dish({}) {
       <Content>
         <ButtonText 
           icon={PiCaretLeft} name='return'
-          onClick={() => navigate('-1')}
+          onClick={() => {
+            navigate(0)
+            navigate('-1')
+          }}
         />
 
         <div>
