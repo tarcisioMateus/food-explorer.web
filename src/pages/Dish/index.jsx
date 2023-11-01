@@ -57,7 +57,16 @@ export function Dish({}) {
         }
       }
     }
+    function updateAmountWithCurrentOrderInfo() {
+      const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
+      const keys = Object.keys(order)
+  
+      if (keys.includes( String(params.id) )) {
+        setAmount(order[params.id])
+      }
+    }
 
+    updateAmountWithCurrentOrderInfo()
     fetchData()
   }, [])
 
