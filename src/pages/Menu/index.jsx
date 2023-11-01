@@ -60,6 +60,14 @@ export function Menu ({ menuIsOpen, onCloseMenu, onSignOut }) {
                 onClick={() => navigate('/newDish')}
               />
             }
+            {
+              ( user && [USER_ROLE.CUSTOMER].includes(user.role) ) &&
+              <ButtonText
+                className='menu'
+                name='Favorites'
+                onClick={() => navigate('/favorites')}
+              />
+            }
 
             <ButtonText
               className='menu'
