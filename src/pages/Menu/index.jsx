@@ -85,7 +85,7 @@ export function Menu ({ menuIsOpen, onCloseMenu, onSignOut }) {
               <Section
                 name={''}
                 data={data}
-                heart={false}
+                search
               />
             }
 

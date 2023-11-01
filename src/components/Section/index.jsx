@@ -2,7 +2,9 @@ import { Card } from '../Card'
 
 import { Container } from "./styles"
 
-export function Section({name, data, favoritesId = [], heart = true, ...rest}) {
+export function Section({
+  name, data, favoritesId = [], search = false, currentOrderKeys = [], currentOrder = {}, ...rest
+}) {
   return (
     <Container {...rest}>
       <h3>{name}</h3>
@@ -20,7 +22,10 @@ export function Section({name, data, favoritesId = [], heart = true, ...rest}) {
                   description={item.description}
                   img={item.avatar}
                   favorite={ favoritesId.includes(item.id) ? true : false}
-                  heart = {heart}
+                  search = {search}
+                  quantity = {
+                    currentOrderKeys.includes(String(item.id)) ? Number(currentOrder[item.id]) : 1
+                  }
                 />
               )
             })

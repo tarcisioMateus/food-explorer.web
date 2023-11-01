@@ -14,12 +14,12 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function Card ({ id, price, name, description, img, favorite, heart }) {
+export function Card ({ id, price, name, description, img, favorite, search, quantity = 1 }) {
   const { user } = useAuth()
 
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
   const [favoriteOn, setFavoriteOn] = useState( favorite )
-  const [amount, setAmount] = useState(1)
+  const [amount, setAmount] = useState(quantity)
 
   const navigate = useNavigate()
 
@@ -49,7 +49,7 @@ export function Card ({ id, price, name, description, img, favorite, heart }) {
   return (
     <Container >
       {
-        ( [USER_ROLE.CUSTOMER].includes(user.role) && heart ) &&
+        ( [USER_ROLE.CUSTOMER].includes(user.role) && !search ) &&
         <ButtonText 
           className='heart'
           img={ favoriteOn ? HeartFilledSvg : HeartSvg }
@@ -81,7 +81,7 @@ export function Card ({ id, price, name, description, img, favorite, heart }) {
       <p> <span>{'R$ '} </span>{price}</p>
       
       {
-        ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
+        ( [USER_ROLE.CUSTOMER].includes(user.role) && !search ) &&
         <div>
           <Stepper
             amount={amount}

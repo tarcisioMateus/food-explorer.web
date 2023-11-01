@@ -17,6 +17,9 @@ export function Home({ }) {
   const [search, setSearch] = useState('')
   const [data, setData] = useState([])
 
+  const [currentOrder, setCurrentOrder] = useState({})
+  const [currentOrderKeys, setCurrentOrderKeys] = useState([])
+
 
   function handleHomeSearch(event) {
     const latestSearch = event.target.value
@@ -38,8 +41,19 @@ export function Home({ }) {
     }
   }
 
+  function getCurrentOrderInfo() {
+    const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
+    const keys = Object.keys(order)
+
+    if (keys.length) {
+      setCurrentOrder(order)
+      setCurrentOrderKeys(keys)
+    }
+  }
+
   useEffect(() => {
     fetchFavoritesId()
+    getCurrentOrderInfo()
     searchForDishes({ search, setData })
   }, [search])
 
@@ -72,6 +86,7 @@ export function Home({ }) {
     }
 
     fetchFavoritesId()
+    getCurrentOrderInfo()
     fetchCategories()
     continueSearchThatStartedOutOfHome()
   }, [])
@@ -102,6 +117,8 @@ export function Home({ }) {
                           name={key}
                           data={category[key]}
                           favoritesId={favoritesId}
+                          currentOrder={currentOrder}
+                          currentOrderKeys={currentOrderKeys}
                         />
                       )
                     }
@@ -125,7 +142,7 @@ export function Home({ }) {
                 name={'results'}
                 data={data}
                 favoritesId={favoritesId}
-                heart={false}
+                search
               />
             }
 
