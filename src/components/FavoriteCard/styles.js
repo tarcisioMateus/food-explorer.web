@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.3rem;
-  width: 24rem;
+  width: 26.5rem;
 
   button {
     background: none;
@@ -31,14 +31,15 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    overflow: hidden;
+    width: 100%;
 
     >h4 {
       font-size: 2rem;
       line-height: 160%;
       font-weight: 500;
       white-space: nowrap;
-      max-width: 100%;
-      overflow: hidden;
+      width: 100%;
     }
 
     .remove {
