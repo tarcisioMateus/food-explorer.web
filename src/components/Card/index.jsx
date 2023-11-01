@@ -19,6 +19,7 @@ export function Card ({ id, price, name, description, img, favorite, heart }) {
 
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
   const [favoriteOn, setFavoriteOn] = useState( favorite )
+  const [amount, setAmount] = useState(1)
 
   const navigate = useNavigate()
 
@@ -76,7 +77,15 @@ export function Card ({ id, price, name, description, img, favorite, heart }) {
       {
         ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
         <div>
-          <Stepper/>
+          <Stepper
+            amount={amount}
+            plus={() => setAmount( prev => prev + 1)}
+            minus={() => {
+              if (amount > 1) {
+                setAmount( prev => prev - 1)
+              }
+            }}
+          />
           <Button 
             className='card'
             name='add'

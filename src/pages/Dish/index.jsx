@@ -25,6 +25,8 @@ export function Dish({}) {
   const [ingredients, setIngredients] = useState([])
   const [price, setPrice] = useState('')
   const [avatarFile, setAvatarFile] = useState(null)
+  const [amount, setAmount] = useState(1)
+
 
   const navigate = useNavigate()
   const params = useParams()
@@ -90,6 +92,13 @@ export function Dish({}) {
                 <Stepper
                   iconSize={27}
                   className='dish'
+                  amount={amount}
+                  plus={() => setAmount( prev => prev + 1)}
+                  minus={() => {
+                    if (amount > 1) {
+                      setAmount( prev => prev - 1)
+                    }
+                  }}
                 />
                 <Button
                   img={ReceiptSvg}
