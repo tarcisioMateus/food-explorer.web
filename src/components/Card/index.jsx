@@ -40,6 +40,12 @@ export function Card ({ id, price, name, description, img, favorite, heart }) {
     }
   }
 
+  function handleAddToOrder () {
+    const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
+    order[id] = amount
+    localStorage.setItem('@foodExplorer:order', JSON.stringify(order))
+  }
+
   return (
     <Container >
       {
@@ -89,6 +95,7 @@ export function Card ({ id, price, name, description, img, favorite, heart }) {
           <Button 
             className='card'
             name='add'
+            onClick={handleAddToOrder}
           />
         </div>
       }

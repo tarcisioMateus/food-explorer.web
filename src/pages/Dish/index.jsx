@@ -31,6 +31,12 @@ export function Dish({}) {
   const navigate = useNavigate()
   const params = useParams()
 
+  function handleAddToOrder () {
+    const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
+    order[params.id] = amount
+    localStorage.setItem('@foodExplorer:order', JSON.stringify(order))
+  }
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -103,6 +109,7 @@ export function Dish({}) {
                 <Button
                   img={ReceiptSvg}
                   name={`buy ∙ R$ ${price}`}
+                  onClick={handleAddToOrder}
                 />
               </div>
             }

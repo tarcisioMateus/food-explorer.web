@@ -19,6 +19,7 @@ export function SignIn({}) {
 
   async function handleSignIn() {
     await signIn({ email, password })
+    localStorage.setItem('@foodExplorer:order', JSON.stringify({}))
   }
 
   return (
