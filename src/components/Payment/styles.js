@@ -19,5 +19,51 @@ export const Container = styled.div`
   .info {
     min-height: 24.4rem;
   }
+
+  &[data-method='PIX'] {
+    .info {
+      .pix {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        >img {
+          margin: 3.2rem;
+          width: clamp(18rem, 50%, 27rem);
+          height: clamp(18rem, 50%, 27rem);
+        }
+      }
+
+      .card {
+        display: none;
+      }
+    }
+  }
+
+  &[data-method='CARD'] {
+    .info {
+      .pix {
+        display: none;
+      }
+
+      .card {
+        display: flex;
+
+        .state {
+          display: none;
+
+          >img {
+            margin: 3.2rem;
+            width: clamp(9.6rem, 30%, 12.8rem);
+            height: clamp(9.6rem, 30%, 12.8rem);
+          }
+          >h3 {
+            font-size: clamp(2rem, 4.5vw ,2.4rem);
+            line-height: 160%;
+          }
+        }
+      }
+    }
+  }
 `
 

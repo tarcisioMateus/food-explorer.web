@@ -11,7 +11,7 @@ export const Container = styled.form`
 
   >div:nth-of-type(2) {
     display: flex;
-    align-items: center;
+    align-items: last baseline;
     justify-content: center;
     gap: 1.8rem;
   }
