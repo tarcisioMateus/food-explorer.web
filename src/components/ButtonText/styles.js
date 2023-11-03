@@ -25,4 +25,16 @@ export const Container = styled.button`
     border-bottom: ${ ({theme}) => `1px solid ${theme.COLORS.MENU_BUTTON_LIST_BB}`};
 
   }
+
+  &.payment {
+    gap: .8rem;
+    font-size: 1.6rem;
+    line-height: 100%;
+    font-weight: 400;
+    border-bottom: ${ ({theme}) => `1px solid ${theme.COLORS.ITEM_BG}`};
+
+    &.active {
+      background-color: ${ ({theme}) => theme.COLORS.INPUT_ADMIN_BG};
+    }
+  }
 `

@@ -74,4 +74,16 @@ export const Container = styled.div`
       background-color: ${ ({theme}) => theme.COLORS.INPUT_ADMIN_BG };
     }
   }
+
+  &.payment {
+    >div {
+      background-color: transparent;
+      border:  ${ ({theme}) => `1px solid ${theme.COLORS.ICON_BUTTON}` };
+
+      &:focus-within, 
+      &:hover {
+        background-color: ${ ({theme}) => theme.COLORS.INPUT_ADMIN_BG};
+      }
+    }
+  }
 `

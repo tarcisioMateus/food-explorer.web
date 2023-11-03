@@ -4,6 +4,7 @@ import { searchForDishes } from '../../utils/searchForDishes'
 
 import { PiMaskSadLight } from 'react-icons/pi'
 
+import { Payment } from '../../components/Payment'
 import { Nav } from '../../components/Nav'
 import { Hero } from '../../components/Hero'
 import { Section } from '../../components/Section'
@@ -97,6 +98,7 @@ export function Home({ }) {
         handleHomeSearch= {handleHomeSearch}
       />
       <div className='body-content'>
+        <Payment/>
 
         { (data.length === 0 && search.length === 0)  &&
         
