@@ -3,7 +3,7 @@ import { SiPix } from "react-icons/si"
 import { BsFillCreditCardFill } from "react-icons/bs"
 
 import { ButtonText } from "../ButtonText"
-
+import { CreditCardForm } from "../CreditCardForm"
 
 import { Container } from "./styles"
 
@@ -40,7 +40,7 @@ export function Payment({}) {
       </div>
 
       <div className="info">
-
+        <CreditCardForm/>
       </div>
     </Container>
   )
