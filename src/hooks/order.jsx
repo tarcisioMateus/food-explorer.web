@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import { api } from '../services'
 
 const OrderContext = createContext({})
 
@@ -7,14 +6,30 @@ function OrderProvider( { children } ) {
   const [currentOrder, setCurrentOrder] = useState({})
 
   function updateCurrentOrder ({dishId, amount}) {
-    setCurrentOrder( prev => prev[dishId] = amount)
+    const  newOrder = currentOrder
+    newOrder[String(dishId)] = String(amount)
+    setCurrentOrder(newOrder)
   }
   function removeDishFromCurrentOrder ({dishId}) {
-    setCurrentOrder( prev => delete prev[dishId])
+    const newOrder = currentOrder
+    delete newOrder[String(dishId)]
+    setCurrentOrder(newOrder)
+  }
+  function getDesiredAmountOnCurrentOrder ({dishId, setAmount}) {
+    if (currentOrder.hasOwnProperty(dishId)) {
+      setAmount( Number(currentOrder[dishId]) )
+    } else {
+      setAmount(1)
+    }
   }
 
   return (
-    <OrderContext.Provider value={{ currentOrder, updateCurrentOrder, removeDishFromCurrentOrder }}>
+    <OrderContext.Provider value={{ 
+      currentOrder, 
+      updateCurrentOrder, 
+      removeDishFromCurrentOrder,
+      getDesiredAmountOnCurrentOrder 
+    }}>
       {children}
     </OrderContext.Provider>
   )

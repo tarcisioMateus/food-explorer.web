@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { USER_ROLE } from '../../utils/roles'
+import { useOrder } from '../../hooks/order'
 import { api } from '../../services' 
 
 import HeartSvg from '../../assets/heart.svg'
@@ -16,6 +17,7 @@ import { Container } from "./styles"
 
 export function Card ({ id, price, name, description, img, favorite, search, quantity = 1 }) {
   const { user } = useAuth()
+  const { updateCurrentOrder, getDesiredAmountOnCurrentOrder } = useOrder()
 
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
   const [favoriteOn, setFavoriteOn] = useState( favorite )
@@ -40,11 +42,9 @@ export function Card ({ id, price, name, description, img, favorite, search, qua
     }
   }
 
-  function handleAddToOrder () {
-    const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
-    order[id] = amount
-    localStorage.setItem('@foodExplorer:order', JSON.stringify(order))
-  }
+  useEffect(()=> {
+    getDesiredAmountOnCurrentOrder({dishId: id , setAmount})
+  }, [])
 
   return (
     <Container >
@@ -95,7 +95,7 @@ export function Card ({ id, price, name, description, img, favorite, search, qua
           <Button 
             className='card'
             name='add'
-            onClick={handleAddToOrder}
+            onClick={() => updateCurrentOrder({ dishId: id, amount })}
           />
         </div>
       }

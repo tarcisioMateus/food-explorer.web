@@ -1,20 +1,13 @@
 import { useState } from "react"
+import { useOrder } from '../../hooks/order'
 
 import { Container } from "./styles"
 
 export function OrderDishCard({id, name, amount, avatar, price, ...rest}) {
+  const { removeDishFromCurrentOrder } = useOrder()
+
   const [spentOnDish, setSpentOnDish] = useState(Number(amount) * Number(price))
-  const [validSpent, setValidSpent] = useState("spent-on-dish")
   const [removed, setRemoved] = useState(false)
-
-  function removeFromOrder() {
-    const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
-    delete order[id]
-    localStorage.setItem('@foodExplorer:order', JSON.stringify(order))
-
-    setRemoved(true)
-    setValidSpent('nothing-spent')
-  }
 
   return (
     <Container data-removed={removed} {...rest}>
@@ -31,11 +24,14 @@ export function OrderDishCard({id, name, amount, avatar, price, ...rest}) {
       <div>
         <h4> 
           {`${amount} X ${name}`} 
-          <span className={validSpent}>{`R$ ${spentOnDish}`}</span>
+          <span>{`R$ ${spentOnDish}`}</span>
         </h4>
         <button
           className='remove'
-          onClick={removeFromOrder}
+          onClick={() => { 
+            removeDishFromCurrentOrder ({dishId: id})
+            setRemoved(true)
+          }}
         >
           Delete
         </button>

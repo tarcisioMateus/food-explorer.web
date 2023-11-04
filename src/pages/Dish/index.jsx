@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
+import { useOrder } from '../../hooks/order'
 import { USER_ROLE } from '../../utils/roles'
 import { api } from '../../services'
 
@@ -19,6 +20,7 @@ import { Container, Content } from "./styles"
 
 export function Dish({}) {
   const { user } = useAuth()
+  const { updateCurrentOrder, getDesiredAmountOnCurrentOrder } = useOrder()
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -27,16 +29,8 @@ export function Dish({}) {
   const [avatarFile, setAvatarFile] = useState(null)
   const [amount, setAmount] = useState(1)
 
-
   const navigate = useNavigate()
   const params = useParams()
-
-  function handleAddToOrder () {
-    const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
-    order[params.id] = amount
-    localStorage.setItem('@foodExplorer:order', JSON.stringify(order))
-    navigate('/currentOrder')
-  }
 
   useEffect(() => {
     async function fetchData() {
@@ -58,16 +52,8 @@ export function Dish({}) {
         }
       }
     }
-    function updateAmountWithCurrentOrderInfo() {
-      const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
-      const keys = Object.keys(order)
-  
-      if (keys.includes( String(params.id) )) {
-        setAmount(order[params.id])
-      }
-    }
-
-    updateAmountWithCurrentOrderInfo()
+    
+    getDesiredAmountOnCurrentOrder({dishId: params.id , setAmount})
     fetchData()
   }, [])
 
@@ -78,7 +64,6 @@ export function Dish({}) {
         <ButtonText 
           icon={PiCaretLeft} name='return'
           onClick={() => {
-            navigate(0)
             navigate('-1')
           }}
         />
@@ -119,7 +104,10 @@ export function Dish({}) {
                 <Button
                   img={ReceiptSvg}
                   name={`buy ∙ R$ ${price}`}
-                  onClick={handleAddToOrder}
+                  onClick={() => {
+                    updateCurrentOrder({ dishId: params.id, amount })
+                    navigate('/currentOrder')
+                  }}
                 />
               </div>
             }
