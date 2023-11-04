@@ -6,6 +6,17 @@ function OrderProvider( { children } ) {
   const [currentOrder, setCurrentOrder] = useState({})
   const [amountInBasket, setAmountInBasket] = useState(0)
 
+
+  function updateCurrentOrder ({dishId, amount}) {
+    updateAmountInBasket ({ dishId, amount})
+
+    const  newOrder = currentOrder
+    newOrder[String(dishId)] = String(amount)
+
+    setCurrentOrder(newOrder)
+    localStorage.setItem('@foodExplorer:currentOrder', JSON.stringify(newOrder))
+    localStorage.setItem('@foodExplorer:amountInBasket', JSON.stringify(amountInBasket))
+  }
   function updateAmountInBasket ({ dishId, amount}) {
     if (currentOrder.hasOwnProperty(dishId)) {
       const previousDishAmount = currentOrder[String(dishId)]
@@ -13,19 +24,16 @@ function OrderProvider( { children } ) {
     }
     setAmountInBasket( prev => prev + Number(amount))
   }
-  function updateCurrentOrder ({dishId, amount}) {
-    updateAmountInBasket ({ dishId, amount})
-    const  newOrder = currentOrder
-    newOrder[String(dishId)] = String(amount)
-    setCurrentOrder(newOrder)
-  }
   function removeDishFromCurrentOrder ({dishId}) {
     const newOrder = currentOrder
     const amountRemoved = newOrder[String(dishId)]
     setAmountInBasket( prev => prev - Number(amountRemoved))
 
     delete newOrder[String(dishId)]
+
     setCurrentOrder(newOrder)
+    localStorage.setItem('@foodExplorer:currentOrder', JSON.stringify(newOrder))
+    localStorage.setItem('@foodExplorer:amountInBasket', JSON.stringify(amountInBasket))
   }
   function getDesiredAmountOnCurrentOrder ({dishId, setAmount}) {
     if (currentOrder.hasOwnProperty(dishId)) {
@@ -34,6 +42,16 @@ function OrderProvider( { children } ) {
       setAmount(1)
     }
   }
+
+  useEffect(() => {
+    const currentOrder = localStorage.getItem('@foodExplorer:currentOrder')
+    const amountInBasket = localStorage.getItem('@foodExplorer:amountInBasket')
+
+    if (currentOrder && amountInBasket) {
+      setCurrentOrder(JSON.parse(currentOrder))
+      setAmountInBasket(JSON.parse(amountInBasket))
+    }
+  }, [])
 
   return (
     <OrderContext.Provider value={{ 
