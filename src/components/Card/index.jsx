@@ -15,13 +15,13 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function Card ({ id, price, name, description, img, favorite, search, quantity = 1 }) {
+export function Card ({ id, price, name, description, img, favorite, search }) {
   const { user } = useAuth()
   const { updateCurrentOrder, getDesiredAmountOnCurrentOrder } = useOrder()
 
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
   const [favoriteOn, setFavoriteOn] = useState( favorite )
-  const [amount, setAmount] = useState(quantity)
+  const [amount, setAmount] = useState(1)
 
   const navigate = useNavigate()
 

@@ -8,32 +8,33 @@ function OrderProvider( { children } ) {
 
 
   function updateCurrentOrder ({dishId, amount}) {
-    updateAmountInBasket ({ dishId, amount})
+    updateAmountInBasket ({previousOrder: currentOrder, dishId, amount})
 
     const  newOrder = currentOrder
     newOrder[String(dishId)] = String(amount)
 
     setCurrentOrder(newOrder)
     localStorage.setItem('@foodExplorer:currentOrder', JSON.stringify(newOrder))
-    localStorage.setItem('@foodExplorer:amountInBasket', JSON.stringify(amountInBasket))
   }
-  function updateAmountInBasket ({ dishId, amount}) {
-    if (currentOrder.hasOwnProperty(dishId)) {
-      const previousDishAmount = currentOrder[String(dishId)]
-      setAmountInBasket( prev => prev - Number(previousDishAmount))
+  function updateAmountInBasket ({ previousOrder, dishId, amount}) {
+    let currentAmount = amountInBasket
+
+    if (previousOrder.hasOwnProperty(dishId)) {
+      const previousDishAmount = previousOrder[String(dishId)]
+      currentAmount -= Number(previousDishAmount)
     }
-    setAmountInBasket( prev => prev + Number(amount))
+    currentAmount += Number(amount)
+    setAmountInBasket( currentAmount)
+    localStorage.setItem('@foodExplorer:amountInBasket', JSON.stringify(currentAmount))
   }
   function removeDishFromCurrentOrder ({dishId}) {
+    updateAmountInBasket ({previousOrder: currentOrder, dishId, amount: 0})
+
     const newOrder = currentOrder
-    const amountRemoved = newOrder[String(dishId)]
-    setAmountInBasket( prev => prev - Number(amountRemoved))
-
     delete newOrder[String(dishId)]
-
+    
     setCurrentOrder(newOrder)
     localStorage.setItem('@foodExplorer:currentOrder', JSON.stringify(newOrder))
-    localStorage.setItem('@foodExplorer:amountInBasket', JSON.stringify(amountInBasket))
   }
   function getDesiredAmountOnCurrentOrder ({dishId, setAmount}) {
     if (currentOrder.hasOwnProperty(dishId)) {
