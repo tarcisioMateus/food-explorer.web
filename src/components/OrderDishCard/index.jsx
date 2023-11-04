@@ -4,6 +4,7 @@ import { Container } from "./styles"
 
 export function OrderDishCard({id, name, amount, avatar, price, ...rest}) {
   const [spentOnDish, setSpentOnDish] = useState(Number(amount) * Number(price))
+  const [validSpent, setValidSpent] = useState("spent-on-dish")
   const [removed, setRemoved] = useState(false)
 
   function removeFromOrder() {
@@ -12,6 +13,7 @@ export function OrderDishCard({id, name, amount, avatar, price, ...rest}) {
     localStorage.setItem('@foodExplorer:order', JSON.stringify(order))
 
     setRemoved(true)
+    setValidSpent('nothing-spent')
   }
 
   return (
@@ -29,7 +31,7 @@ export function OrderDishCard({id, name, amount, avatar, price, ...rest}) {
       <div>
         <h4> 
           {`${amount} X ${name}`} 
-          <span className="spent-on-dish">{`R$ ${spentOnDish}`}</span>
+          <span className={validSpent}>{`R$ ${spentOnDish}`}</span>
         </h4>
         <button
           className='remove'

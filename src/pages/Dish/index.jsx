@@ -35,6 +35,7 @@ export function Dish({}) {
     const order = JSON.parse( localStorage.getItem('@foodExplorer:order') )
     order[params.id] = amount
     localStorage.setItem('@foodExplorer:order', JSON.stringify(order))
+    navigate('/currentOrder')
   }
 
   useEffect(() => {
