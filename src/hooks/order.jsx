@@ -4,14 +4,26 @@ const OrderContext = createContext({})
 
 function OrderProvider( { children } ) {
   const [currentOrder, setCurrentOrder] = useState({})
+  const [amountInBasket, setAmountInBasket] = useState(0)
 
+  function updateAmountInBasket ({ dishId, amount}) {
+    if (currentOrder.hasOwnProperty(dishId)) {
+      const previousDishAmount = currentOrder[String(dishId)]
+      setAmountInBasket( prev => prev - Number(previousDishAmount))
+    }
+    setAmountInBasket( prev => prev + Number(amount))
+  }
   function updateCurrentOrder ({dishId, amount}) {
+    updateAmountInBasket ({ dishId, amount})
     const  newOrder = currentOrder
     newOrder[String(dishId)] = String(amount)
     setCurrentOrder(newOrder)
   }
   function removeDishFromCurrentOrder ({dishId}) {
     const newOrder = currentOrder
+    const amountRemoved = newOrder[String(dishId)]
+    setAmountInBasket( prev => prev - Number(amountRemoved))
+
     delete newOrder[String(dishId)]
     setCurrentOrder(newOrder)
   }
@@ -26,9 +38,10 @@ function OrderProvider( { children } ) {
   return (
     <OrderContext.Provider value={{ 
       currentOrder, 
+      amountInBasket,
       updateCurrentOrder, 
       removeDishFromCurrentOrder,
-      getDesiredAmountOnCurrentOrder 
+      getDesiredAmountOnCurrentOrder,
     }}>
       {children}
     </OrderContext.Provider>

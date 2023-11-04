@@ -16,7 +16,7 @@ export function CreditCardForm({}) {
       <InputWrapper
         className='payment'
         label='Credit Card Number'
-        placeHolder='0000 0000 0000 0000'
+        placeholder='0000 0000 0000 0000'
         pattern=".{12,16}"
         value={cardNumber}
         onChange={(e) => {
@@ -32,7 +32,7 @@ export function CreditCardForm({}) {
         <InputWrapper
           className='payment'
           label='Expiration Date'
-          placeHolder='01/25'
+          placeholder='01/25'
           pattern=".{5}"
           value={cardExpiration}
           onChange={(e) => {
@@ -50,7 +50,7 @@ export function CreditCardForm({}) {
         <InputWrapper
           className='payment'
           label='CVC'
-          placeHolder='000'
+          placeholder='000'
           pattern=".{3}"
           value={cardCVC}
           onChange={(e) => {

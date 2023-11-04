@@ -11,8 +11,8 @@ export const Container = styled.div`
     display: flex;
     height: 8.1rem;
 
-    >line {
-      border: ${ ({theme}) => `1px solid ${theme.COLORS.ITEM_BG}`};
+    >.line {
+      border-left: ${ ({theme}) => `1px solid ${theme.COLORS.ITEM_BG}`};
     }
   }
 

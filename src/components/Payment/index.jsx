@@ -31,7 +31,7 @@ export function Payment({}) {
             setCurrentMethod('PIX')
           }}
         />
-        <line/>
+        <div className="line"/>
         <ButtonText
           className='payment'
           id='card'
