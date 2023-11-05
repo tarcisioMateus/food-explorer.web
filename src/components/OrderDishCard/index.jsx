@@ -3,33 +3,39 @@ import { useOrder } from '../../hooks/order'
 
 import { Container } from "./styles"
 
-export function OrderDishCard({id, name, amount, avatar, price, ...rest}) {
+export function OrderDishCard({ data, ...rest }) {
   const { removeDishFromCurrentOrder } = useOrder()
 
-  const [spentOnDish, setSpentOnDish] = useState(Number(amount) * Number(price))
+  const [spentOnDish, setSpentOnDish] = useState(() =>{ 
+    let spent = Number(data.amount) * Number(data.price.replace(',', '.'))
+    if (!String(spent).includes('.')) {
+      spent = String(spent)+'.00'
+    }
+    return ( spent )
+  })
   const [removed, setRemoved] = useState(false)
 
   return (
     <Container data-removed={removed} {...rest}>
       <button
         className='open-dish'
-        onClick={() => navigate(`/dish/${id}`)}
+        onClick={() => navigate(`/dish/${data.id}`)}
       >
       <img
-        src={ avatar }
-        alt={`image of ${name}`}
+        src={ data.avatar }
+        alt={`image of ${data.name}`}
       />
       </button>
 
       <div>
         <h4> 
-          {`${amount} X ${name}`} 
+          {`${data.amount} X ${data.name}`} 
           <span>{`R$ ${spentOnDish}`}</span>
         </h4>
         <button
           className='remove'
           onClick={() => { 
-            removeDishFromCurrentOrder ({dishId: id})
+            removeDishFromCurrentOrder ({dishId: data.id, moneySaved: spentOnDish})
             setRemoved(true)
           }}
         >

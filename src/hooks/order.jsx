@@ -1,10 +1,14 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { api } from '../services'
 
 const OrderContext = createContext({})
 
 function OrderProvider( { children } ) {
   const [currentOrder, setCurrentOrder] = useState({})
   const [amountInBasket, setAmountInBasket] = useState(0)
+  const [currentOrderData, setCurrentOrderData] = useState({})
+  const [currentTotal, setCurrentTotal] = useState(0)
+
 
 
   function updateCurrentOrder ({dishId, amount}) {
@@ -27,12 +31,13 @@ function OrderProvider( { children } ) {
     setAmountInBasket( currentAmount)
     localStorage.setItem('@foodExplorer:amountInBasket', JSON.stringify(currentAmount))
   }
-  function removeDishFromCurrentOrder ({dishId}) {
+  function removeDishFromCurrentOrder ({dishId, moneySaved}) {
     updateAmountInBasket ({previousOrder: currentOrder, dishId, amount: 0})
+    setCurrentTotal( prev => prev -= Number(moneySaved))
 
     const newOrder = currentOrder
     delete newOrder[String(dishId)]
-    
+
     setCurrentOrder(newOrder)
     localStorage.setItem('@foodExplorer:currentOrder', JSON.stringify(newOrder))
   }
@@ -43,14 +48,54 @@ function OrderProvider( { children } ) {
       setAmount(1)
     }
   }
+  function updateCurrentTotal ({price, amount}) {
+    let total = JSON.parse(localStorage.getItem('@foodExplorer:currentTotal'))
+
+    total += (Number(amount) * Number(price))
+    setCurrentTotal( total)
+    localStorage.setItem('@foodExplorer:currentTotal', JSON.stringify(total))
+  }
+
+
+  async function fetchCurrentOrderData() {
+    const currentOrderCopy = currentOrder
+    localStorage.setItem('@foodExplorer:currentTotal', JSON.stringify(0))
+
+    for (let dishId in currentOrderCopy) {
+      try {
+        const response = await api.get(`/dishes/${dishId}`)
+        const { name, price, avatar } = response.data
+        const amount = currentOrderCopy[String(dishId)]
+
+        const updatedData = currentOrderData
+        updatedData[String(dishId)] = {
+          name, price, amount,
+          id: dishId,
+          avatar: `${api.defaults.baseURL}/files/${avatar}`
+        }
+        updateCurrentTotal ({price, amount})
+        setCurrentOrderData(updatedData)
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message)
+        } else {
+          alert("can't access this page right now, please try again later!")
+          navigate('-1')
+        }
+      }
+    }
+  }
 
   useEffect(() => {
     const currentOrder = localStorage.getItem('@foodExplorer:currentOrder')
     const amountInBasket = localStorage.getItem('@foodExplorer:amountInBasket')
+    const currentTotal = localStorage.getItem('@foodExplorer:currentTotal')
 
     if (currentOrder && amountInBasket) {
       setCurrentOrder(JSON.parse(currentOrder))
       setAmountInBasket(JSON.parse(amountInBasket))
+
+      if (currentTotal) setCurrentTotal(JSON.parse(currentTotal))
     }
   }, [])
 
@@ -58,9 +103,12 @@ function OrderProvider( { children } ) {
     <OrderContext.Provider value={{ 
       currentOrder, 
       amountInBasket,
+      currentOrderData,
+      currentTotal,
       updateCurrentOrder, 
       removeDishFromCurrentOrder,
       getDesiredAmountOnCurrentOrder,
+      fetchCurrentOrderData,
     }}>
       {children}
     </OrderContext.Provider>

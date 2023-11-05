@@ -7,14 +7,17 @@ import ReceiptSvg from '../../assets/receipt.svg'
 import { Container } from "./styles"
 
 export function ReceiptButton ({ ...rest}) {
-  const { amountInBasket } = useOrder()
+  const { amountInBasket, fetchCurrentOrderData } = useOrder()
 
   const navigate = useNavigate()
 
   return (
     <Container 
       type='button' {...rest}
-      onClick={() => navigate('/currentOrder')}
+      onClick={async() => {
+        await fetchCurrentOrderData()
+        navigate('/currentOrder')
+      }}
     >
       <img
         src = { ReceiptSvg }
