@@ -20,7 +20,7 @@ import { Container, Content } from "./styles"
 
 export function Dish({}) {
   const { user } = useAuth()
-  const { updateCurrentOrder, getDesiredAmountOnCurrentOrder } = useOrder()
+  const { updateCurrentOrder, getDesiredAmountOnCurrentOrder, fetchCurrentOrderData } = useOrder()
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -104,8 +104,9 @@ export function Dish({}) {
                 <Button
                   img={ReceiptSvg}
                   name={`buy ∙ R$ ${price}`}
-                  onClick={() => {
+                  onClick={async() => {
                     updateCurrentOrder({ dishId: params.id, amount })
+                    await fetchCurrentOrderData()
                     navigate('/currentOrder')
                   }}
                 />

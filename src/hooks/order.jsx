@@ -60,6 +60,7 @@ function OrderProvider( { children } ) {
   async function fetchCurrentOrderData() {
     const currentOrderCopy = currentOrder
     localStorage.setItem('@foodExplorer:currentTotal', JSON.stringify(0))
+    localStorage.setItem('@foodExplorer:currentOrderData', JSON.stringify({}))
 
     for (let dishId in currentOrderCopy) {
       try {
@@ -67,14 +68,18 @@ function OrderProvider( { children } ) {
         const { name, price, avatar } = response.data
         const amount = currentOrderCopy[String(dishId)]
 
-        const updatedData = currentOrderData
+        const updatedData = JSON.parse(localStorage.getItem('@foodExplorer:currentOrderData'))
         updatedData[String(dishId)] = {
           name, price, amount,
           id: dishId,
           avatar: `${api.defaults.baseURL}/files/${avatar}`
         }
         updateCurrentTotal ({price, amount})
-        setCurrentOrderData(updatedData)
+        setCurrentOrderData(() => {
+          localStorage.setItem('@foodExplorer:currentOrderData', JSON.stringify(updatedData))
+          return updatedData
+        })
+
       } catch (error) {
         if (error.response) {
           alert(error.response.data.message)
@@ -89,13 +94,10 @@ function OrderProvider( { children } ) {
   useEffect(() => {
     const currentOrder = localStorage.getItem('@foodExplorer:currentOrder')
     const amountInBasket = localStorage.getItem('@foodExplorer:amountInBasket')
-    const currentTotal = localStorage.getItem('@foodExplorer:currentTotal')
 
     if (currentOrder && amountInBasket) {
       setCurrentOrder(JSON.parse(currentOrder))
       setAmountInBasket(JSON.parse(amountInBasket))
-
-      if (currentTotal) setCurrentTotal(JSON.parse(currentTotal))
     }
   }, [])
 

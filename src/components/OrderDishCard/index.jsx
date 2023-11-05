@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { useOrder } from '../../hooks/order'
 
 import { Container } from "./styles"
@@ -14,6 +15,8 @@ export function OrderDishCard({ data, ...rest }) {
     return ( spent )
   })
   const [removed, setRemoved] = useState(false)
+
+  const navigate = useNavigate()
 
   return (
     <Container data-removed={removed} {...rest}>
