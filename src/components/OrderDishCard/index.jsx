@@ -32,8 +32,9 @@ export function OrderDishCard({ data, ...rest }) {
 
       <div>
         <h4> 
-          {`${data.amount} X ${data.name}`} 
-          <span>{`R$ ${spentOnDish}`}</span>
+          <span className="amount">{`${data.amount} x `}</span>
+          {data.name} 
+          <span className="price">{`R$ ${spentOnDish}`}</span>
         </h4>
         <button
           className='remove'

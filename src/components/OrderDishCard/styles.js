@@ -1,12 +1,14 @@
 import styled from "styled-components"
 
+import { DEVICES } from "../../styles/responsiveX"
+
 export const Container = styled.div`
   padding: 1.6rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.3rem;
-  width: 40rem;
+  max-width: 44rem;
 
   button {
     background: none;
@@ -33,7 +35,8 @@ export const Container = styled.div`
     overflow: hidden;
     width: 100%;
 
-    >h4 {
+    >h4,
+    >h4 .amount {
       color: ${ ({theme}) => theme.COLORS.MAIN_T};
       font-size: 2rem;
       line-height: 160%;
@@ -41,7 +44,7 @@ export const Container = styled.div`
       white-space: nowrap;
       width: 100%;
 
-      >span {
+      .price {
         color: ${ ({theme}) => theme.COLORS.LABEL};
         font-size: 1.2rem;
         line-height: 160%;
@@ -49,6 +52,11 @@ export const Container = styled.div`
 
         display: inline-block;
         margin-left: 1rem;
+      }
+
+      .amount, 
+      .price {
+        display: none;
       }
     }
 
@@ -63,5 +71,14 @@ export const Container = styled.div`
 
   &[data-removed="true"] {
     display: none;
+  }
+
+  @media only screen and (${DEVICES.sm}) {
+    >div >h4 {
+      .amount, 
+      .price {
+        display: inline;
+      }
+    }
   }
 `

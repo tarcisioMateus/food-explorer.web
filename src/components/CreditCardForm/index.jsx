@@ -5,7 +5,7 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function CreditCardForm({}) {
+export function CreditCardForm({disabled}) {
   const [cardNumber, setCardNumber] = useState('')
   const [cardExpiration, setCardExpiration] = useState('')
   const [cardCVC, setCardCVC] = useState('')
@@ -65,6 +65,7 @@ export function CreditCardForm({}) {
 
       <Button
         name='Proceed'
+        disabled= {disabled}
       />
 
     </Container>

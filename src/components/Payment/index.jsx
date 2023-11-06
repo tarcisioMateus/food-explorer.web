@@ -13,7 +13,7 @@ import { CreditCardForm } from "../CreditCardForm"
 
 import { Container } from "./styles"
 
-export function Payment({}) {
+export function Payment({ disabled = false }) {
   const [currentMethod, setCurrentMethod] = useState('PIX')
 
   return (
@@ -21,6 +21,7 @@ export function Payment({}) {
 
       <div className="method">
         <ButtonText 
+          disabled={disabled}
           className='payment active'
           id='pix'
           name='Pix'
@@ -33,6 +34,7 @@ export function Payment({}) {
         />
         <div className="line"/>
         <ButtonText
+          disabled={disabled}
           className='payment'
           id='card'
           name='Credit Card'
@@ -58,7 +60,9 @@ export function Payment({}) {
           className="card"
           data-state=''
         >
-          <CreditCardForm/>
+          <CreditCardForm
+            disabled={disabled}
+          />
 
           <div
             className="state"

@@ -15,6 +15,13 @@ export const Container = styled.button`
   &:focus {
     outline: ${ ({theme}) => `1px solid ${theme.COLORS.BUTTON_T}` };
   }
+
+  &:disabled {
+    background-color: ${ ({theme}) => theme.COLORS.BUTTON_DEL_ADMIN_BG };
+    color: ${ ({theme}) => theme.COLORS.MENU_BUTTON_LIST_BB };
+    transform: none;
+    filter: none;
+  }
   
   &.menu {
     font-size: 2.4rem;
