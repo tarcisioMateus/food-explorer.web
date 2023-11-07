@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useOrder } from '../../hooks/order'
-import { api } from '../../services'
 
 import { Nav } from "../../components/Nav"
 import { OrderDishCard } from "../../components/OrderDishCard"
@@ -11,23 +10,9 @@ import { Footer } from "../../components/Footer"
 import { Container, Content } from "./styles"
 
 export function CurrentOrder ({}) {
-  const { currentOrderData, currentTotal, currentOrder } = useOrder()
+  const { currentOrderData, currentTotal } = useOrder()
 
   const [action, setAction] = useState('')
-
-  async function submitCurrentOrder () {
-    try {
-      await api.post(`/orders`, {description: currentOrder}, { withCredentials: true })
-      
-    } catch (error) {
-      if (error.response) {
-        alert(error.response.data.message)
-      } else {
-        alert("something went wrong, please try again later!")
-        navigate('-1')
-      }
-    }
-  }
 
   return (
     <Container>
@@ -61,10 +46,7 @@ export function CurrentOrder ({}) {
 
           <div className="payment">
             <h2>Payment</h2>
-            <Payment
-              disabled={ currentTotal ? false : true}
-              onSubmit={submitCurrentOrder}
-            />
+            <Payment/>
           </div>
         </main>
       </Content>

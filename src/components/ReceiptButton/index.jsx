@@ -14,6 +14,7 @@ export function ReceiptButton ({ ...rest}) {
   return (
     <Container 
       type='button' {...rest}
+      disabled={ amountInBasket ? false : true}
       onClick={async() => {
         await fetchCurrentOrderData()
         navigate('/currentOrder')

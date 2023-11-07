@@ -30,6 +30,16 @@ export const Container = styled.button`
     font-weight: 500;
   }
 
+  &:disabled {
+    background-color: ${ ({theme}) => theme.COLORS.MENU_BUTTON_LIST_BB };
+    transform: none;
+    filter: none;
+
+    >div {
+      background-color: ${ ({theme}) => theme.COLORS.MENU_BUTTON_LIST_BB };
+    }
+  }
+
   @media only screen and (${DEVICES.lg}) {
     background-color: ${ ({theme}) => theme.COLORS.BUTTON_BG};
 

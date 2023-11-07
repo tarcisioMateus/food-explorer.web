@@ -39,7 +39,7 @@ export function OrderDishCard({ data, ...rest }) {
         <button
           className='remove'
           onClick={() => { 
-            removeDishFromCurrentOrder ({dishId: data.id, moneySaved: spentOnDish})
+            removeDishFromCurrentOrder ({dishId: data.id, saved: {amount: data.amount, price: data.price}})
             setRemoved(true)
           }}
         >

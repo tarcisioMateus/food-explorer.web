@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useOrder } from '../../hooks/order'
 
 import QrCode from "../../assets/qr_code.svg"
 import Clock from "../../assets/clock.svg"
@@ -13,7 +14,9 @@ import { CreditCardForm } from "../CreditCardForm"
 
 import { Container } from "./styles"
 
-export function Payment({ disabled = false, onSubmit }) {
+export function Payment({}) {
+  const { currentTotal } = useOrder()
+
   const [currentMethod, setCurrentMethod] = useState('PIX')
 
   return (
@@ -21,7 +24,7 @@ export function Payment({ disabled = false, onSubmit }) {
 
       <div className="method">
         <ButtonText 
-          disabled={disabled}
+          disabled={ currentTotal ? false : true}
           className='payment active'
           id='pix'
           name='Pix'
@@ -34,7 +37,7 @@ export function Payment({ disabled = false, onSubmit }) {
         />
         <div className="line"/>
         <ButtonText
-          disabled={disabled}
+          disabled={ currentTotal ? false : true}
           className='payment'
           id='card'
           name='Credit Card'
@@ -60,10 +63,7 @@ export function Payment({ disabled = false, onSubmit }) {
           className="card"
           data-state=''
         >
-          <CreditCardForm
-            disabled={disabled}
-            onSubmit={onSubmit}
-          />
+          <CreditCardForm/>
 
           <div
             className="state"

@@ -31,9 +31,9 @@ function OrderProvider( { children } ) {
     setAmountInBasket( currentAmount)
     localStorage.setItem('@foodExplorer:amountInBasket', JSON.stringify(currentAmount))
   }
-  function removeDishFromCurrentOrder ({dishId, moneySaved}) {
+  function removeDishFromCurrentOrder ({dishId, saved}) {
     updateAmountInBasket ({previousOrder: currentOrder, dishId, amount: 0})
-    setCurrentTotal( prev => prev -= Number(moneySaved))
+    updateCurrentTotal ({price: saved.price, amount: Number( saved.amount * -1)})
 
     const newOrder = currentOrder
     delete newOrder[String(dishId)]
@@ -89,6 +89,20 @@ function OrderProvider( { children } ) {
     }
   }
 
+  async function submitCurrentOrder () {
+    try {
+      await api.post(`/orders`, {description: currentOrder}, { withCredentials: true })
+      
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("something went wrong, please try again later!")
+        navigate('-1')
+      }
+    }
+  }
+
   useEffect(() => {
     const currentOrder = localStorage.getItem('@foodExplorer:currentOrder')
     const amountInBasket = localStorage.getItem('@foodExplorer:amountInBasket')
@@ -109,6 +123,7 @@ function OrderProvider( { children } ) {
       removeDishFromCurrentOrder,
       getDesiredAmountOnCurrentOrder,
       fetchCurrentOrderData,
+      submitCurrentOrder,
     }}>
       {children}
     </OrderContext.Provider>
