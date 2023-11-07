@@ -13,7 +13,7 @@ import { CreditCardForm } from "../CreditCardForm"
 
 import { Container } from "./styles"
 
-export function Payment({ disabled = false }) {
+export function Payment({ disabled = false, onSubmit }) {
   const [currentMethod, setCurrentMethod] = useState('PIX')
 
   return (
@@ -62,6 +62,7 @@ export function Payment({ disabled = false }) {
         >
           <CreditCardForm
             disabled={disabled}
+            onSubmit={onSubmit}
           />
 
           <div

@@ -75,10 +75,8 @@ function OrderProvider( { children } ) {
           avatar: `${api.defaults.baseURL}/files/${avatar}`
         }
         updateCurrentTotal ({price, amount})
-        setCurrentOrderData(() => {
-          localStorage.setItem('@foodExplorer:currentOrderData', JSON.stringify(updatedData))
-          return updatedData
-        })
+        localStorage.setItem('@foodExplorer:currentOrderData', JSON.stringify(updatedData))
+        setCurrentOrderData( updatedData )
 
       } catch (error) {
         if (error.response) {
