@@ -22,7 +22,7 @@ export const Container = styled.div`
     >thead {
   
       tr, th {
-        padding: 2.1rem 0 2.1rem 2.4rem;
+        padding: 2.1rem 2.4rem;
         border: ${ ({theme}) => `2px solid ${theme.COLORS.TAG_BG}`};
       }
     }
