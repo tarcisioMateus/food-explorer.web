@@ -9,8 +9,6 @@ import { Hero } from '../../components/Hero'
 import { Section } from '../../components/Section'
 import { Footer } from '../../components/Footer'
 
-import { TableOrders } from '../../components/TableOrders'
-
 import { Container, NotFound } from './styles'
 
 export function Home({ }) {
@@ -18,7 +16,6 @@ export function Home({ }) {
   const [favoritesId, setFavoritesId] = useState([])
   const [search, setSearch] = useState('')
   const [data, setData] = useState([])
-
 
 
 
@@ -88,7 +85,6 @@ export function Home({ }) {
       />
       <div className='body-content'>
 
-        <TableOrders></TableOrders>
         { (data.length === 0 && search.length === 0)  &&
           <>
             <main>

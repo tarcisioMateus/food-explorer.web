@@ -26,6 +26,16 @@ export const Container = styled.div`
         border: ${ ({theme}) => `2px solid ${theme.COLORS.TAG_BG}`};
       }
     }
+
+    >tbody {
+      font-weight: 400;
+      color: ${ ({theme}) => theme.COLORS.LABEL};
+
+      tr, td {
+        padding: 2.1rem 2.4rem;
+        border: ${ ({theme}) => `2px solid ${theme.COLORS.TAG_BG}`};
+      }
+    }
   }
 
 `

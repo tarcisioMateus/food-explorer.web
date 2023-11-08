@@ -1,6 +1,6 @@
 import { Container } from "./styles"
 
-export function TableOrders({children}) {
+export function TableOrders({orders}) {
   return (
     <Container>
       <table>
@@ -13,7 +13,23 @@ export function TableOrders({children}) {
           </tr>
         </thead>
 
-        <tbody>{ children }</tbody>
+        <tbody>
+          {
+            orders.map( order => {
+              return (
+                <tr key={order.id}>
+                  <td className="status">
+                    { order.state }
+                  </td>
+                  <td className="code"> { order.id } </td>
+                  <td className="details"> { order.description } </td>
+                  <td className="time"> { order.created_at } </td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+
       </table>
     </Container>
   )
