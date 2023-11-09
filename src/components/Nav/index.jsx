@@ -4,6 +4,8 @@ import { useAuth } from '../../hooks/auth'
 import { USER_ROLE } from '../../utils/roles'
 
 import { FiSearch ,FiLogOut } from 'react-icons/fi'
+import { SlStar } from 'react-icons/sl'
+import { BsClockHistory } from 'react-icons/bs'
 
 import MenuSvg from '../../assets/menu.svg'
 
@@ -52,15 +54,37 @@ export function Nav ({ handleHomeSearch = null }) {
         />
         {
           ( [USER_ROLE.CUSTOMER].includes(user.role) ) &&
-          <ReceiptButton/>
+          <>
+            <ButtonText
+              className='favorites'
+              icon={SlStar}
+              iconSize={32}
+              onClick={() => navigate('/favorites')}
+            />
+            <ReceiptButton className='receipt'/>
+            <ButtonText
+              className='history'
+              icon={BsClockHistory}
+              iconSize={32}
+              onClick={() => navigate('/ordersHistory')}
+            />
+          </>
         }
         {
           ( [USER_ROLE.ADMIN].includes(user.role) ) &&
-          <Button
-            className='new-dish'
-            name='New dish'
-            onClick={ () => navigate('/newDish')}
-          />
+          <>
+            <ButtonText
+              className='orders'
+              icon={BsClockHistory}
+              iconSize={32}
+              onClick={() => navigate('/orders')}
+            />
+            <Button
+              className='new-dish'
+              name='New dish'
+              onClick={ () => navigate('/newDish')}
+            />
+          </>
         }
         <ButtonText
           icon={ FiLogOut }

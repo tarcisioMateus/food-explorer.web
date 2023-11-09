@@ -19,6 +19,7 @@ export const Content = styled.main`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
     margin: 0 2rem 3rem;
 
     >button:first-of-type {

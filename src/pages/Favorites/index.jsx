@@ -51,7 +51,6 @@ export function Favorites () {
               name='Return'
               onClick={() => {
                 navigate('-1')
-                navigate(0)
               }}
             />
           </div>

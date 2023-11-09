@@ -54,19 +54,33 @@ export function Menu ({ menuIsOpen, onCloseMenu, onSignOut }) {
           <>
             {
               ( user && [USER_ROLE.ADMIN].includes(user.role) ) &&
-              <ButtonText
-                className='menu'
-                name='New dish'
-                onClick={() => navigate('/newDish')}
-              />
+              <>
+                <ButtonText
+                  className='menu'
+                  name='New dish'
+                  onClick={() => navigate('/newDish')}
+                />
+                <ButtonText
+                  className='menu'
+                  name='Orders'
+                  onClick={() => navigate('/orders')}
+                />
+              </>
             }
             {
               ( user && [USER_ROLE.CUSTOMER].includes(user.role) ) &&
-              <ButtonText
-                className='menu'
-                name='Favorites'
-                onClick={() => navigate('/favorites')}
-              />
+              <>
+                <ButtonText
+                  className='menu'
+                  name='Favorites'
+                  onClick={() => navigate('/favorites')}
+                />
+                <ButtonText
+                  className='menu'
+                  name='Orders history'
+                  onClick={() => navigate('/ordersHistory')}
+                />
+              </>
             }
 
             <ButtonText

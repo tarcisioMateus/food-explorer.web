@@ -11,11 +11,11 @@ export function AdminRoutes() {
 
   return (
     <Routes>
-      <Route path="/orders" element={<Home/>} />
+      <Route path="/" element={<Home/>} />
       <Route path="/dish/:id" element={<Dish/>} />
       <Route path="/newDish" element={<NewDish/>} />
       <Route path="/editDish/:id" element={<EditDish/>} />
-      <Route path="/" element={<Orders/>} />
+      <Route path="/orders" element={<Orders/>} />
 
 
       <Route path="*" element={<Navigate to="/"/>} />

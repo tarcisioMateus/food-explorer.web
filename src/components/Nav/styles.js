@@ -26,7 +26,10 @@ export const Container = styled.nav`
       max-width: 42vw;
     }
   
-    >button:last-of-type {
+    >button:last-of-type,
+    .history,
+    .favorites,
+    .orders {
       display: none;
       width: min-content;
       height: 3.2rem;
@@ -54,8 +57,14 @@ export const Container = styled.nav`
     >div {
       margin: auto;
       width: var(--main-width);
-      padding: 2.85rem 0;
+      padding: .8rem 0 0;
       gap: clamp(1.6rem, 2vw + .2rem, 3.2rem);
+      flex-wrap: wrap;
+
+      >.brand {
+        margin: auto;
+        min-width: 100%;
+      }
   
       #menu,
       >button:first-of-type {
@@ -68,14 +77,21 @@ export const Container = styled.nav`
       }
     }
 
+    &[data-role="customer"] {
+      >div {
+
+        .history,
+        .favorites {
+          display: inline;
+        }
+      }
+    }
+
     &[data-role="admin"] {
       >div {
 
-        .brand {
-          margin: 0;
-        }
-
-        .new-dish {
+        .new-dish,
+        .orders {
           display: inline-block;
         }
       }
@@ -85,6 +101,17 @@ export const Container = styled.nav`
   @media only screen and (${DEVICES.lg}) {
     >div {
       gap: clamp(1.6rem, 1vw + .1rem, 3.2rem);
+      padding: 3rem 0;
+      flex-wrap: nowrap;
+
+      .brand {
+        margin: 0;
+        min-width: min-content;
+      }
+
+      .receipt {
+        min-width: 12.5rem;
+      }
     }
   }
 `
