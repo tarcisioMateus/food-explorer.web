@@ -34,12 +34,28 @@ export const Content = styled.main`
     }
   }
 
-  
+  >.table {
+    display: none;
+  }
+  >.card-display {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
 
   @media only screen and (${DEVICES.sm}) {
     padding: 0 2rem 3.3rem 0;
     width: var(--main-width);
     margin: 0 auto;
     margin-top: clamp( 1.6rem, 3vw, 4.2rem);
+  }
+  
+  @media only screen and (${DEVICES.l}) {
+    >.table {
+      display: flex;
+    }
+    >.card-display {
+      display: none;
+    }
   }
 `

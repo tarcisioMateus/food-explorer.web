@@ -7,6 +7,7 @@ import { PiCaretLeft } from 'react-icons/pi'
 import { Nav } from '../../components/Nav'
 import { ButtonText } from '../../components/ButtonText'
 import { TableOrders } from '../../components/TableOrders'
+import { OrderCard } from "../../components/OrderCard"
 import { Footer } from '../../components/Footer'
 
 import { Container, Content } from "./styles"
@@ -53,6 +54,11 @@ export function OrdersHistory({}) {
         </div>
 
         <TableOrders orders={userOrders}/>
+        <div className="card-display">
+          {
+            userOrders.map( (order, index) => <OrderCard order={order} key={index}/>)
+          }
+        </div>
       </Content>
       <Footer/>
     </Container>
