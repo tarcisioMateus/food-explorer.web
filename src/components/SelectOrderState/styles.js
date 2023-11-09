@@ -1,6 +1,17 @@
 import styled from "styled-components"
 
-export const Container = styled.select`
+export const Container = styled.div`
+  position: relative;
+  min-width: 14rem;
+
+  >img {
+    position: absolute;
+    left: 1.6rem;
+    top: 2rem;
+  }
+
+  >select {
+
     padding: 1.3rem 1.6rem 1.3rem 3.2rem;
     border-radius: 0.5rem;
     background-color: ${ ({theme}) => theme.COLORS.INPUT_AUTH_BG };
@@ -27,5 +38,6 @@ export const Container = styled.select`
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMjQnIGhlaWdodD0nMjUnIHZpZXdCb3g9JzAgMCAyNCAyNScgZmlsbD0nbm9uZScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBmaWxsLXJ1bGU9J2V2ZW5vZGQnIGNsaXAtcnVsZT0nZXZlbm9kZCcgZD0nTTQuNDU0NSA4Ljc1MzU4QzQuODkzODQgOC4zMTQyNCA1LjYwNjE2IDguMzE0MjQgNi4wNDU1IDguNzUzNThMMTIgMTQuNzA4MUwxNy45NTQ1IDguNzUzNThDMTguMzkzOCA4LjMxNDI0IDE5LjEwNjIgOC4zMTQyNCAxOS41NDU1IDguNzUzNThDMTkuOTg0OCA5LjE5MjkyIDE5Ljk4NDggOS45MDUyMyAxOS41NDU1IDEwLjM0NDZMMTIuNzk1NSAxNy4wOTQ2QzEyLjM1NjIgMTcuNTMzOSAxMS42NDM4IDE3LjUzMzkgMTEuMjA0NSAxNy4wOTQ2TDQuNDU0NSAxMC4zNDQ2QzQuMDE1MTcgOS45MDUyMyA0LjAxNTE3IDkuMTkyOTIgNC40NTQ1IDguNzUzNThaJyBmaWxsPScjQzRDNENDJy8+PC9zdmc+Cg==");
     background-repeat: no-repeat;
     background-position: calc(100% - 1.6rem) center;
+  }
 
 `

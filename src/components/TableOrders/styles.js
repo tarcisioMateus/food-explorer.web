@@ -35,6 +35,10 @@ export const Container = styled.div`
         padding: 2.1rem 2.4rem;
         border: ${ ({theme}) => `2px solid ${theme.COLORS.TAG_BG}`};
       }
+      td {
+        min-width: 15rem;
+
+      }
     }
   }
 
