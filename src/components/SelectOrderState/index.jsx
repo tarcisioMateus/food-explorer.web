@@ -1,12 +1,30 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ORDER_STATE } from "../../utils/states"
+import { api } from '../../services'
 
 import { OrderStatus } from "../OrderStatus"
 
 import { Container } from "./styles"
 
-export function SelectOrderState({  status }) {
+export function SelectOrderState({  status, id }) {
   const [currentStatus, setCurrentStatus] = useState(status)
+
+
+  useEffect(() => {
+    async function updateOrder() {
+      try {
+        await api.put(`/orders/admin`, {id, state: currentStatus}, { withCredentials: true })
+  
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message)
+        } else {
+          alert("something went wrong, please try again later!")
+        }
+      }
+    }
+    updateOrder()
+  }, [currentStatus])
 
   return (
     <Container>
@@ -14,7 +32,7 @@ export function SelectOrderState({  status }) {
       <OrderStatus status={currentStatus}/>
       <select
         
-        value={status}
+        value={currentStatus}
         onChange={ (e) => setCurrentStatus(e.target.value)}
       >
         {

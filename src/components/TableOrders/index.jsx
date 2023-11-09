@@ -29,7 +29,7 @@ export function TableOrders({orders}) {
                   <td className="status">
                     {
                       ( user && [USER_ROLE.ADMIN].includes(user.role) ) &&
-                      <SelectOrderState status={order.state}/>
+                      <SelectOrderState status={order.state} id={order.id}/>
                     }
                     {
                       ( user && [USER_ROLE.CUSTOMER].includes(user.role) ) &&
