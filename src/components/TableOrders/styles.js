@@ -27,6 +27,7 @@ export const Container = styled.div`
       tr, th {
         position: sticky; 
         top: 0; 
+        z-index: 100;
         background: ${ ({theme}) => `linear-gradient(180deg, ${theme.COLORS.BG} 0%, ${theme.COLORS.TAG_BG} 100%)`};
 
         padding: 2.1rem 2.4rem;
