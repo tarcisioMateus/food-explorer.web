@@ -13,7 +13,7 @@ export const Container = styled.div`
   padding: 1.6rem 2.3rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 1.6rem;
 
@@ -22,8 +22,14 @@ export const Container = styled.div`
 
   >div:first-of-type {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
     gap: 3.2rem;
   }
+
+  >.select-order-state {
+    width: 100%;
+  }
+
 `

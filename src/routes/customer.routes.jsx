@@ -9,11 +9,11 @@ import { OrdersHistory } from "../pages/OrdersHistory"
 export function CustomerRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/ordersHistory" element={<Home/>} />
       <Route path="/dish/:id" element={<Dish/>} />
       <Route path="/favorites" element={<Favorites/>} />
       <Route path="/currentOrder" element={<CurrentOrder/>} />
-      <Route path="/ordersHistory" element={<OrdersHistory/>} />
+      <Route path="/" element={<OrdersHistory/>} />
 
       <Route path="*" element={<Navigate to="/"/>} />
     </Routes>

@@ -10,7 +10,7 @@ export function TableOrders({orders}) {
   const { user } = useAuth()
 
   return (
-    <Container>
+    <Container className='table'>
       <table>
         <thead>
           <tr>

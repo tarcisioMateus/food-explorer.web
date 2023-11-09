@@ -6,11 +6,11 @@ import { CustomerOrderState } from '../CustomerOrderState'
 
 import { Container } from "./styles"
 
-export function OrderCard({ order }) {
+export function OrderCard({ order, ...rest }) {
   const { user } = useAuth()
 
   return (
-    <Container>
+    <Container {...rest}>
       <div>
         <p>{ String(order.id).padStart(8, '00000000') }</p>
         {

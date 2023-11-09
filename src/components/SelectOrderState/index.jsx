@@ -27,7 +27,7 @@ export function SelectOrderState({  status, id }) {
   }, [currentStatus])
 
   return (
-    <Container>
+    <Container className="select-order-state">
       
       <OrderStatus status={currentStatus}/>
       <select
