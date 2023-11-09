@@ -15,22 +15,29 @@ export const Content = styled.main`
   
   padding: 1.6rem clamp(2.8rem, 1vw, 5.6rem) 3.3rem;
 
-  >button:first-of-type {
-    align-self: flex-start;
-    width: min-content;
-  
-    font-size: 2.4rem;
-    line-height: 140%;
-  
-    >svg {
-      margin-right: .2rem;
+  > div:first-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2rem 3rem;
+
+    >button:first-of-type {
+      align-self: flex-start;
+      width: min-content;
+    
+      font-size: 2.4rem;
+      line-height: 140%;
+    
+      >svg {
+        margin-right: .2rem;
+      }
     }
   }
 
   
 
   @media only screen and (${DEVICES.sm}) {
-    padding: 1.6rem 0 3.3rem;
+    padding: 0 2rem 3.3rem 0;
     width: var(--main-width);
     margin: 0 auto;
     margin-top: clamp( 1.6rem, 3vw, 4.2rem);

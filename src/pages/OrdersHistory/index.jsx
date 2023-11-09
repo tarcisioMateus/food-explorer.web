@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { api } from '../../services'
 
 import { PiCaretLeft } from 'react-icons/pi'
@@ -14,11 +15,13 @@ export function OrdersHistory({}) {
 
   const [userOrders, setUserOrders] = useState([])
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await api.get(`/orders`, { withCredentials: true })
-        const info = response.data
+        const info = response.data.reverse()
         setUserOrders(info)
 
       } catch (error) {
@@ -38,12 +41,16 @@ export function OrdersHistory({}) {
     <Container>
       <Nav/>
       <Content>
-        <ButtonText 
-          icon={PiCaretLeft} name='return'
-          onClick={() => {
-            navigate('-1')
-          }}
-        />
+        <div>
+
+          <h2> Orders history</h2>
+          <ButtonText 
+            icon={PiCaretLeft} name='return'
+            onClick={() => {
+              navigate('-1')
+            }}
+          />
+        </div>
 
         <TableOrders orders={userOrders}/>
       </Content>
