@@ -1,3 +1,5 @@
+import { SelectOrderState } from "../SelectOrderState"
+
 import { Container } from "./styles"
 
 export function TableOrders({orders}) {
@@ -19,7 +21,7 @@ export function TableOrders({orders}) {
               return (
                 <tr key={order.id}>
                   <td className="status">
-                    { order.state }
+                    <SelectOrderState status={order.state}/>
                   </td>
                   <td className="code"> { String(order.id).padStart(8, '00000000') } </td>
                   <td className="details"> { order.description } </td>
