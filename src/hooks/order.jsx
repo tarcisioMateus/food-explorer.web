@@ -92,6 +92,11 @@ function OrderProvider( { children } ) {
   async function submitCurrentOrder () {
     try {
       await api.post(`/orders`, {description: currentOrder}, { withCredentials: true })
+
+      localStorage.removeItem('@foodExplorer:currentOrder')
+      localStorage.removeItem('@foodExplorer:amountInBasket')
+      setCurrentOrder({})
+      setAmountInBasket(0)
       
     } catch (error) {
       if (error.response) {
