@@ -28,8 +28,9 @@ function AuthProvider( { children } ) {
   }
   
   function signOut() {
-    localStorage.removeItem('@foodExplorer:user')
     setUser()
+    localStorage.clear()
+    localStorage.removeItem('@foodExplorer:user')
   }
 
   useEffect(() => {
