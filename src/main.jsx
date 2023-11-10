@@ -7,6 +7,7 @@ import GlobalStyles from './styles/global'
 
 import { AuthProvider } from './hooks/auth'
 import { OrderProvider } from './hooks/order'
+import { FavoriteProvider } from './hooks/favorite'
 import { Routes } from './routes'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <GlobalStyles/>
       <AuthProvider>
         <OrderProvider>
-          <Routes/>
+          <FavoriteProvider>
+            <Routes/>
+          </FavoriteProvider>
         </OrderProvider>
       </AuthProvider>
     </ThemeProvider>

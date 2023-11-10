@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../hooks/auth'
 import { USER_ROLE } from '../../utils/roles'
+import { useAuth } from '../../hooks/auth'
 import { useOrder } from '../../hooks/order'
+import { useFavorite } from '../../hooks/favorite'
 import { api } from '../../services' 
 
 import HeartSvg from '../../assets/heart.svg'
@@ -15,12 +16,13 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function Card ({ id, price, name, description, img, favorite, search }) {
+export function Card ({ id, price, name, description, img, search = false}) {
   const { user } = useAuth()
   const { updateCurrentOrder, getDesiredAmountOnCurrentOrder } = useOrder()
+  const { favoritesId, setFavoritesId } = useFavorite()
 
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
-  const [favoriteOn, setFavoriteOn] = useState( favorite )
+  const [favoriteOn, setFavoriteOn] = useState( favoritesId.includes(id)  )
   const [amount, setAmount] = useState(1)
 
   const navigate = useNavigate()
@@ -28,6 +30,7 @@ export function Card ({ id, price, name, description, img, favorite, search }) {
   async function handleAddToFavorites() {
     try {
       await api.post(`/favorites/${id}`, { withCredentials: true })
+      setFavoritesId( prev => [...prev, id])
       setFavoriteOn( true )
     } catch (error) {
       alert('something went wrong, please try again later!')
@@ -36,6 +39,7 @@ export function Card ({ id, price, name, description, img, favorite, search }) {
   async function handleRemoveFromFavorites() {
     try {
       await api.delete(`/favorites/${id}`, { withCredentials: true })
+      setFavoritesId( prev => prev.filter( entry => entry !== id ))
       setFavoriteOn( false )
     } catch (error) {
       alert('something went wrong, please try again later!')

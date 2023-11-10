@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../services'
 import { searchForDishes } from '../../utils/searchForDishes'
+import { useFavorite } from '../../hooks/favorite'
 
 import { PiMaskSadLight } from 'react-icons/pi'
 
@@ -12,8 +13,9 @@ import { Footer } from '../../components/Footer'
 import { Container, NotFound } from './styles'
 
 export function Home({ }) {
+  const { fetchFavoritesId } = useFavorite()
+
   const [categories, setCategories] = useState([])
-  const [favoritesId, setFavoritesId] = useState([])
   const [search, setSearch] = useState('')
   const [data, setData] = useState([])
 
@@ -24,24 +26,10 @@ export function Home({ }) {
     setSearch(latestSearch)
   }
 
-  async function fetchFavoritesId() {
-    try {
-      const response = await api.get('/favoritesDishes/id', { withCredentials: true })
-      const info = response.data
-      setFavoritesId( info )
   
-    } catch (error) {
-      if (error.response) {
-        alert(error.response.data.message)
-      } else {
-        alert('something went wrong, please try again later!')
-      }
-    }
-  }
 
 
   useEffect(() => {
-    fetchFavoritesId()
     searchForDishes({ search, setData })
   }, [search])
 
@@ -102,7 +90,6 @@ export function Home({ }) {
                           key={index}
                           name={key}
                           data={category[key]}
-                          favoritesId={favoritesId}
                         />
                       )
                     }
@@ -125,7 +112,6 @@ export function Home({ }) {
               <Section
                 name={'results'}
                 data={data}
-                favoritesId={favoritesId}
                 search
               />
             }

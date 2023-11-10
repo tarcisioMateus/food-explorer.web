@@ -3,7 +3,7 @@ import { Card } from '../Card'
 import { Container } from "./styles"
 
 export function Section({
-  name, data, favoritesId = [], search = false, ...rest
+  name, data, search = false, ...rest
 }) {
   return (
     <Container {...rest}>
@@ -21,7 +21,6 @@ export function Section({
                   name={item.name} 
                   description={item.description}
                   img={item.avatar}
-                  favorite={ favoritesId.includes(item.id) ? true : false}
                   search = {search}
                 />
               )
