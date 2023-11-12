@@ -59,6 +59,7 @@ function OrderProvider( { children } ) {
 
   async function fetchCurrentOrderData() {
     const currentOrderCopy = currentOrder
+    localStorage.setItem('@foodExplorer:latestOrderId', JSON.stringify(0))
     localStorage.setItem('@foodExplorer:currentTotal', JSON.stringify(0))
     localStorage.setItem('@foodExplorer:currentOrderData', JSON.stringify({}))
 
@@ -91,8 +92,10 @@ function OrderProvider( { children } ) {
 
   async function submitCurrentOrder () {
     try {
-      await api.post(`/orders`, {description: currentOrder}, { withCredentials: true })
-
+      const response = await api.post(`/orders`, {description: currentOrder}, { withCredentials: true })
+      const order_id = response.data.id
+      localStorage.setItem('@foodExplorer:latestOrderId', JSON.stringify(order_id))
+      
       localStorage.removeItem('@foodExplorer:currentOrder')
       localStorage.removeItem('@foodExplorer:amountInBasket')
       setCurrentOrder({})

@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useOrder } from '../../hooks/order'
+import { ORDER_STATE } from "../../utils/states"
+import { api } from "../../services"
 
 import QrCode from "../../assets/qr_code.svg"
 import Clock from "../../assets/clock.svg"
@@ -18,9 +20,46 @@ export function Payment({}) {
   const { currentTotal } = useOrder()
 
   const [currentMethod, setCurrentMethod] = useState('PIX')
+  const [currentState, setCurrentState] = useState(ORDER_STATE.NONE)
+
+  let intervalId
+  async function fetchUpdatedOrderState() {
+
+    intervalId = setInterval(async() => {
+
+      try {
+        const order_id = JSON.parse(localStorage.getItem('@foodExplorer:latestOrderId'))
+        if (order_id) {
+          const response = await api.get(`/orders/${order_id}`, { withCredentials: true })
+          const updatedState = response.data.state
+          setCurrentState(updatedState)
+        }
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message)
+        } else {
+          alert("can't access this page right now, please try again later!")
+        }
+        clearInterval(intervalId)
+        navigate('-1')
+      }
+
+    }, 1000 * 30)
+  }
+  useEffect(() => {
+
+    if ([ORDER_STATE.PENDING].includes(currentState)) {
+      fetchUpdatedOrderState()
+    }
+
+    if ([ORDER_STATE.DELIVERED].includes(currentState)) {
+      clearInterval(intervalId)
+    }
+
+  }, [currentState])
 
   return (
-    <Container data-method={currentMethod}>
+    <Container data-method={currentMethod} data-state={currentState}>
 
       <div className="method">
         <ButtonText 
@@ -63,7 +102,10 @@ export function Payment({}) {
           className="card"
           data-state=''
         >
-          <CreditCardForm/>
+          <CreditCardForm
+            id='credit-card-form'
+            updateState={() => setCurrentState(ORDER_STATE.PENDING)}
+          />
 
           <div
             className="state"

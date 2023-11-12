@@ -6,7 +6,7 @@ import { Button } from "../Button"
 
 import { Container } from "./styles"
 
-export function CreditCardForm({}) {
+export function CreditCardForm({ updateState, ...rest }) {
   const { submitCurrentOrder, currentTotal } = useOrder()
 
   const [cardNumber, setCardNumber] = useState('')
@@ -14,7 +14,6 @@ export function CreditCardForm({}) {
   const [cardCVC, setCardCVC] = useState('')
 
   function inputIsInvalid() {
-
     if( !cardNumber || !cardExpiration || !cardCVC) return true
     if( cardNumber.length < 12 || cardNumber.length > 16 ) return true
     if( cardExpiration.length < 5 ) return true
@@ -24,7 +23,7 @@ export function CreditCardForm({}) {
   }
 
   return (
-    <Container>
+    <Container {...rest}>
 
       <InputWrapper
         disabled={ currentTotal ? false : true}
@@ -82,7 +81,10 @@ export function CreditCardForm({}) {
       <Button
         name='Proceed'
         disabled= {!currentTotal ? true : inputIsInvalid() }
-        onClick={submitCurrentOrder}
+        onClick={async() => {
+          updateState()
+          await submitCurrentOrder()
+        }}
       />
 
     </Container>

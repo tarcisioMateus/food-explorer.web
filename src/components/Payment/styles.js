@@ -52,16 +52,79 @@ export const Container = styled.div`
         .state {
           display: none;
 
+          .waiting, 
+          .approved,
+          .delivered {
+            display: none;
+          }
+
           >img {
             margin: 3.2rem;
             width: clamp(9.6rem, 30%, 12.8rem);
             height: clamp(9.6rem, 30%, 12.8rem);
           }
           >h3 {
-            font-size: clamp(2rem, 4.5vw ,2.4rem);
+            font-size: clamp(1.8rem, 4.5vw ,2.4rem);
             line-height: 160%;
+            text-align: center;
           }
         }
+
+      }
+    }
+  }
+
+  &[data-state='pending'] {
+
+    #credit-card-form {
+      display: none;
+    }
+
+    .info .card .state  {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+
+      .waiting {
+        display: inline-block;
+      }
+    }
+  }
+  &[data-state='preparing'] {
+
+    #credit-card-form {
+      display: none;
+    }
+
+    .info .card .state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+
+      .approved {
+        display: inline-block;
+      }
+    }
+  }
+  &[data-state='delivered'] {
+
+    #credit-card-form {
+      display: none;
+    }
+
+    .info .card .state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      
+      .delivered {
+        display: inline-block;
       }
     }
   }
