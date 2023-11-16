@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { api } from '../../services'
 import { searchForDishes } from '../../utils/searchForDishes'
 import { useFavorite } from '../../hooks/favorite'
+import { useAuth } from '../../hooks/auth'
 
 import { PiMaskSadLight } from 'react-icons/pi'
 
@@ -13,6 +14,8 @@ import { Footer } from '../../components/Footer'
 import { Container, NotFound } from './styles'
 
 export function Home({ }) {
+  const { signOut } = useAuth()
+
   const { fetchFavoritesId } = useFavorite()
 
   const [categories, setCategories] = useState([])
@@ -20,14 +23,10 @@ export function Home({ }) {
   const [data, setData] = useState([])
 
 
-
   function handleHomeSearch(event) {
     const latestSearch = event.target.value
     setSearch(latestSearch)
   }
-
-  
-
 
   useEffect(() => {
     searchForDishes({ search, setData })
@@ -41,7 +40,9 @@ export function Home({ }) {
         setCategories( info )
 
       } catch (error) {
-        if (error.response) {
+        if (error.response?.status === 401) {
+          signOut()
+        } else if (error.response) {
           alert(error.response.data.message)
         } else {
           alert('something went wrong, please try again later!')

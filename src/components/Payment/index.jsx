@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useOrder } from '../../hooks/order'
 import { ORDER_STATE } from "../../utils/states"
 import { api } from "../../services"
+import { useAuth } from '../../hooks/auth'
 
 import QrCode from "../../assets/qr_code.svg"
 import Clock from "../../assets/clock.svg"
@@ -17,6 +18,7 @@ import { CreditCardForm } from "../CreditCardForm"
 import { Container } from "./styles"
 
 export function Payment({}) {
+  const { signOut } = useAuth()
   const { currentTotal } = useOrder()
 
   const [currentMethod, setCurrentMethod] = useState('PIX')
@@ -35,7 +37,9 @@ export function Payment({}) {
           setCurrentState(updatedState)
         }
       } catch (error) {
-        if (error.response) {
+        if (error.response?.status === 401) {
+          signOut()
+        } else if (error.response) {
           alert(error.response.data.message)
         } else {
           alert("can't access this page right now, please try again later!")

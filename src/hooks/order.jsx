@@ -1,9 +1,12 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { api } from '../services'
+import { useAuth } from '../hooks/auth'
 
 const OrderContext = createContext({})
 
 function OrderProvider( { children } ) {
+  const { signOut } = useAuth()
+
   const [currentOrder, setCurrentOrder] = useState({})
   const [amountInBasket, setAmountInBasket] = useState(0)
   const [currentOrderData, setCurrentOrderData] = useState({})
@@ -80,7 +83,9 @@ function OrderProvider( { children } ) {
         setCurrentOrderData( updatedData )
 
       } catch (error) {
-        if (error.response) {
+        if (error.response?.status === 401) {
+          signOut()
+        } else if (error.response) {
           alert(error.response.data.message)
         } else {
           alert("can't access this page right now, please try again later!")
@@ -102,7 +107,9 @@ function OrderProvider( { children } ) {
       setAmountInBasket(0)
       
     } catch (error) {
-      if (error.response) {
+      if (error.response?.status === 401) {
+        signOut()
+      } else if (error.response) {
         alert(error.response.data.message)
       } else {
         alert("something went wrong, please try again later!")

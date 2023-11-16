@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services' 
+import { useAuth } from '../../hooks/auth'
 
 import { PiCaretLeft } from 'react-icons/pi'
 
@@ -17,6 +18,8 @@ import { Footer } from '../../components/Footer'
 import { Container, Form } from "./styles"
 
 export function NewDish({}) {
+  const { signOut } = useAuth()
+
   const [ingredients, setIngredients] = useState([])
   const [ newIngredient, setNewIngredient ] = useState("")
 
@@ -58,7 +61,9 @@ export function NewDish({}) {
       navigate('-1')
 
     } catch (error) {
-      if (error.response) {
+      if (error.response?.status === 401) {
+        signOut()
+      } else if (error.response) {
         alert(error.response.data.message)
       } else {
         alert('unable to add new dish right now, try again later!')

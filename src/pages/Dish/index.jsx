@@ -19,7 +19,7 @@ import { Footer } from '../../components/Footer'
 import { Container, Content } from "./styles"
 
 export function Dish({}) {
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
   const { updateCurrentOrder, getDesiredAmountOnCurrentOrder, fetchCurrentOrderData } = useOrder()
 
   const [name, setName] = useState('')
@@ -44,7 +44,9 @@ export function Dish({}) {
         setAvatarFile(`${api.defaults.baseURL}/files/${avatar}`)
         
       } catch (error) {
-        if (error.response) {
+        if (error.response?.status === 401) {
+          signOut()
+        } else if (error.response) {
           alert(error.response.data.message)
         } else {
           alert("can't access this page right now, please try again later!")

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../services'
+import { useAuth } from '../../hooks/auth'
 
 import { PiCaretLeft } from 'react-icons/pi'
 
@@ -17,6 +18,8 @@ import { Footer } from '../../components/Footer'
 import { Container, Form } from "./styles"
 
 export function EditDish({}) {
+  const { signOut } = useAuth()
+
   const [name, setName] = useState('')
   const [category, setCategory] = useState('')
   const [price, setPrice] = useState('')
@@ -58,7 +61,9 @@ export function EditDish({}) {
       navigate('-1')
 
     } catch (error) {
-      if (error.response) {
+      if (error.response?.status === 401) {
+        signOut()
+      } else if (error.response) {
         alert(error.response.data.message)
       } else {
         alert('unable to update dish right now, please try again later!')

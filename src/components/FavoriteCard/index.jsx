@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services' 
+import { useAuth } from '../../hooks/auth'
+
 
 import { Container } from './styles'
 
 export function FavoriteCard ({ name, img, id}) {
+  const { signOut } = useAuth()
+
   const [avatar, setAvatar] = useState( img ? `${api.defaults.baseURL}/files/${img}` : null )
   const [removed, setRemoved] = useState(false)
 
@@ -18,7 +22,11 @@ export function FavoriteCard ({ name, img, id}) {
         await api.delete(`/favorites/${id}`, { withCredentials: true })
         setRemoved(true)
       } catch (error) {
-        alert('something went wrong, please try again later!')
+        if (error.response?.status === 401) {
+          signOut()
+        } else {
+          alert('something went wrong, please try again later!')
+        }
       }
     }
   }

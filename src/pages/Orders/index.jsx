@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { api } from '../../services'
+import { useAuth } from '../../hooks/auth'
 
 import { PiCaretLeft } from 'react-icons/pi'
 
@@ -13,6 +14,7 @@ import { Footer } from '../../components/Footer'
 import { Container, Content } from "./styles"
 
 export function Orders({}) {
+  const { signOut } = useAuth()
 
   const [orders, setOrders] = useState([])
 
@@ -26,7 +28,9 @@ export function Orders({}) {
         setOrders(info)
 
       } catch (error) {
-        if (error.response) {
+        if (error.response?.status === 401) {
+          signOut()
+        } else if (error.response) {
           alert(error.response.data.message)
         } else {
           alert("can't access this page right now, please try again later!")

@@ -17,7 +17,7 @@ import { Button } from "../Button"
 import { Container } from "./styles"
 
 export function Card ({ id, price, name, description, img, search = false}) {
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
   const { updateCurrentOrder, getDesiredAmountOnCurrentOrder } = useOrder()
   const { favoritesId, setFavoritesId } = useFavorite()
 
@@ -33,7 +33,11 @@ export function Card ({ id, price, name, description, img, search = false}) {
       setFavoritesId( prev => [...prev, id])
       setFavoriteOn( true )
     } catch (error) {
-      alert('something went wrong, please try again later!')
+      if (error.response?.status === 401) {
+        signOut()
+      } else {
+        alert('something went wrong, please try again later!')
+      }
     }
   }
   async function handleRemoveFromFavorites() {
@@ -42,7 +46,11 @@ export function Card ({ id, price, name, description, img, search = false}) {
       setFavoritesId( prev => prev.filter( entry => entry !== id ))
       setFavoriteOn( false )
     } catch (error) {
-      alert('something went wrong, please try again later!')
+      if (error.response?.status === 401) {
+        signOut()
+      } else {
+        alert('something went wrong, please try again later!')
+      }
     }
   }
 

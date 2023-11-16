@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react"
 import { ORDER_STATE } from "../../utils/states"
 import { api } from '../../services'
+import { useAuth } from '../../hooks/auth'
 
 import { OrderStatus } from "../OrderStatus"
 
 import { Container } from "./styles"
 
 export function SelectOrderState({  status, id }) {
+  const { signOut } = useAuth()
+
   const [currentStatus, setCurrentStatus] = useState(status)
 
 
@@ -16,7 +19,9 @@ export function SelectOrderState({  status, id }) {
         await api.put(`/orders/admin`, {id, state: currentStatus}, { withCredentials: true })
   
       } catch (error) {
-        if (error.response) {
+        if (error.response?.status === 401) {
+          signOut()
+        } else if (error.response) {
           alert(error.response.data.message)
         } else {
           alert("something went wrong, please try again later!")
