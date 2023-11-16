@@ -28,8 +28,23 @@ export function Home({ }) {
     setSearch(latestSearch)
   }
 
+  async function handleSearch() {
+    try {
+      await searchForDishes({ search, setData })
+
+    } catch (error) {
+      if (error.response?.status === 401) {
+        signOut()
+      } else if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert(error)
+      }
+    }
+  }
+  
   useEffect(() => {
-    searchForDishes({ search, setData })
+    handleSearch()
   }, [search])
 
   useEffect(() => {

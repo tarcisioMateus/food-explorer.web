@@ -15,15 +15,30 @@ import { Footer } from "../../components/Footer"
 import { Container, Form, NotFound } from "./styles"
 
 export function Menu ({ menuIsOpen, onCloseMenu, onSignOut }) {
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
 
   const [search, setSearch] = useState('')
   const [data, setData] = useState([])
 
   const navigate = useNavigate()
 
+  async function handleSearch() {
+    try {
+      await searchForDishes({ search, setData })
+
+    } catch (error) {
+      if (error.response?.status === 401) {
+        signOut()
+      } else if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert(error)
+      }
+    }
+  }
+  
   useEffect(() => {
-    searchForDishes({ search, setData })
+    handleSearch()
   }, [search])
 
   return (
