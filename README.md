@@ -22,9 +22,9 @@ to install all dependencies and start the application.
 - there's a heart that can click to add a dish to your favorites
 - there's a page where you can see all dishes you have favorited and you can also remove any if want to
 - can click in one dish to open it and see it's picture, how it's made, the ingredients and the price.
-- also can select the amount desired of a dish and add it to the current order
+- also can select the desired amount of a dish and add it to the current order
 - can open the current order to proceed or remove one dish from it
-- when making the payment with credit card, please don't put real information, just presse 1 till all fields are valid, you were warned, it's not my responsibility, it's one you now.
+- when making the payment with credit card, please don't put real information, just presse 1 till all fields are valid, you were warned, it's not my responsibility, it's on you now.
 - the status of the current order will try to update every 30 seconds, waiting for the admin to update it
 - can go to orders history to see every order you have made so far
 
